@@ -6,7 +6,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
   position: fixed;
   top: 0;
   left: 0;
@@ -15,8 +14,9 @@
   .logo__container {
     font-size: 20px;
     font-weight: bold;
-    a {
-      color: #ffffff;
+    img {
+      width: 70px;
+      margin: 5px 0;
     }
   }
 }

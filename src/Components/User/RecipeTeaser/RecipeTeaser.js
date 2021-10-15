@@ -5,9 +5,9 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { db } from "../../../firebaseAuthConfig";
 
 const RecipeTeaser = ({ name, image, description, category, url }) => {
-  const handleClick = () => {
-    db.collection("wishlist").add({ wishlist_recipe_name: name });
-  };
+  // const handleClick = () => {
+  //   db.collection("wishlist").add({ wishlist_recipe_name: name });
+  // };
   return (
     <div className="recipe__teaser">
       <div className="recipe__teaser__image">

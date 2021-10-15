@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.category__teaser__container {
+  width: auto;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.category__teaser__container:hover .category__teaser__card {
+  transform: scale(0.9);
+}
+.category__teaser__container .category__teaser__card:hover {
+  transform: scale(1.1);
+}

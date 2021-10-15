@@ -12,6 +12,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import FaceIcon from "@material-ui/icons/Face";
 import { useAuth } from "../../../Contexts/AuthContext";
 import { useHistory } from "react-router-dom";
+import "./ProfileNavbarIcon.scss";
 
 const StyledMenu = withStyles({
   paper: {
@@ -70,7 +71,10 @@ export default function ProfileNavbarIcon() {
   return (
     <div>
       <Button aria-haspopup="true" onClick={handleClick}>
-        <AccountCircleIcon style={{ color: blueGrey[50], fontSize: 40 }} />
+        <AccountCircleIcon
+          className="account_thumbnail"
+          style={{ fontSize: 40 }}
+        />
       </Button>
       <StyledMenu
         id="customized-menu"
