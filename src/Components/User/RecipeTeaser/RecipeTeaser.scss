@@ -1,0 +1,17 @@
+.recipe__teaser {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 20px 10px;
+  border: 1px solid black;
+  .recipe__teaser__image {
+    text-align: center;
+    img {
+      width: 90%;
+      margin: 0 auto;
+      height: auto;
+    }
+  }
+}
