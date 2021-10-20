@@ -45,19 +45,20 @@ const CategoryPage = () => {
   return (
     <>
       <ClientHeader />
-      <div className="category__page__presentation" style={style}>
-        <div className="blurbg">
-          <div className="category__page__details">
-            <div className="category__page__title">
-              {category.category_name}
-            </div>
-            <div className="category__page__description">
-              {category.category_description}
-            </div>
+      <div className="category__page__content">
+        <div className="category__page__presentation" style={style}></div>
+        <div className="category__page__details">
+          <div className="category__page__title">{category.category_name}</div>
+          <div className="category__page__description">
+            {category.category_description}
           </div>
         </div>
       </div>
-      <div className="recipeTeaser__container">
+      <div className="category__page__separator">&nbsp;</div>
+      <div className="category__page__subtitle">
+        <h3>We recommend</h3>
+      </div>
+      <div className="recipe__teaser__container">
         {recipes.map((recipe) => {
           return (
             <RecipeTeaser
@@ -67,6 +68,9 @@ const CategoryPage = () => {
               description={recipe.recipe_description}
               category={recipe.recipe_category}
               url={recipe.recipe_url}
+              time={recipe.recipe_duration}
+              difficulty={recipe.recipe_difficulty}
+              calories={recipe.recipe_calories}
             />
           );
           // console.log(recipe);
