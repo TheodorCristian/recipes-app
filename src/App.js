@@ -12,6 +12,7 @@ import CategoryPage from "./Components/User/CategoryPage/CategoryPage";
 import { AuthProvider } from "./Contexts/AuthContext";
 // import { WishlistProvider } from "./Contexts/WishlistContext";
 import RecipePage from "./Components/User/RecipePage/RecipePage";
+import ClientHeader from "./Components/User/ClientHeader/ClientHeader";
 // import WishlistPage from "./Components/User/WishlistPage/WishlistPage";
 
 const App = () => {

@@ -7,7 +7,7 @@
 .recipe__page__container {
   width: 100%;
   max-width: 1400px;
-  margin: 200px auto;
+  margin: 200px auto 100px auto;
   display: flex;
   justify-content: center;
   border-radius: 30px;
@@ -79,33 +79,95 @@
           margin: 0 30px;
           .recipe__ingredients__container {
             width: 50%;
+            align-self: flex-start;
+            margin-top: 30px;
             .ingredients__list {
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+              flex-wrap: wrap;
+              .ingredient__pair {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                margin-right: 30px;
+                margin-bottom: 10px;
+                width: 150px;
+                input {
+                  margin: 10px 10px 10px 0px;
+                }
+                p {
+                  margin-bottom: 0px !important;
+                }
+                .ingredient__name {
+                  font-size: 15px;
+                  text-transform: capitalize;
+                  font-weight: bold;
+                  color: #00acee;
+                  margin: none !important;
+                }
+              }
               .ingredient-active {
                 text-decoration-line: line-through;
               }
             }
           }
           .recipe__description__content {
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 10px;
             width: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            .recipe__title__subtitle {
+              text-align: center;
+              h2 {
+                margin: 10px;
+              }
+              p {
+                width: 75%;
+                margin: 10px auto;
+              }
+            }
             .recipe__cal__dif__prep__information {
               display: flex;
               align-items: center;
               justify-content: space-around;
               div {
-                padding: 20px 30px;
+                padding: 10px 30px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
+                p {
+                  font-weight: bold;
+                  text-transform: uppercase;
+                  color: #e78300;
+                  font-size: 12px;
+                }
               }
               div img {
                 width: 30px;
                 height: auto;
                 margin-bottom: 15px;
+              }
+            }
+            .recipe__add__to__wishlist {
+              button {
+                padding: 5px 15px;
+                outline: none;
+                background: #00acee;
+                color: #fff;
+                font-size: 15px;
+                border-radius: 30px;
+                border: none;
+                transition: 0.2s;
+                margin-bottom: 10px;
+              }
+              button:hover {
+                background: #00abeeb0;
               }
             }
           }

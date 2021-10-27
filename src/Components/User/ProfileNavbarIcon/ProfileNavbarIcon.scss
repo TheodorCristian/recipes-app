@@ -1,3 +1,16 @@
-.account_thumbnail {
-   color: #3B3B3B;
+.profile__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  border: 1px solid #eee;
+  border-radius: 50%;
+  transition: 0.3s;
+  img {
+    padding: 7px;
+    width: 100%;
+  }
+}
+.profile__icon:hover {
+  transform: scale(1.2);
 }

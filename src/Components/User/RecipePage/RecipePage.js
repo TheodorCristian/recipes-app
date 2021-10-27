@@ -43,16 +43,18 @@ const RecipePage = () => {
   };
 
   const addToWishlist = () => {
-    console.log("Recipe added to wishlist");
+    alert("This feature will be implemented soon!");
   };
 
   const handleCssCutWord = () => {
     let ingredients = document.getElementsByClassName("ingredients__list")[0];
     let ingredient = ingredients.getElementsByTagName("div");
+    let checkboxes = ingredients.getElementsByTagName("input");
+    let ingredientNames = ingredients.getElementsByTagName("p");
 
     for (let i = 0; i < ingredient.length; i++) {
-      ingredient[i].addEventListener("click", () => {
-        ingredient[i].classList.add("ingredient-active");
+      checkboxes[i].addEventListener("change", () => {
+        ingredientNames[i].classList.toggle("ingredient-active");
       });
     }
   };
@@ -70,14 +72,13 @@ const RecipePage = () => {
   }, []);
 
   useEffect(() => {
-   handleCssEvent();
-  handleCssCutWord();
-  })
+    handleCssEvent();
+    handleCssCutWord();
+  });
 
   return (
-    
     <>
-   
+      <ClientHeader />
       <div className="recipe__page__container">
         <div className="recipe__page__content">
           <div className="recipe__page__tab__header">
@@ -97,12 +98,15 @@ const RecipePage = () => {
           <div className="recipe__page__tab__indicator"></div>
           <div className="recipe__page__tab__body">
             <div className="active recipe__page__tab__body__info">
-              <h2>Section</h2>
+              <h2>Ingredients</h2>
               <div className="recipe__description__container">
                 <div className="recipe__ingredients__container">
                   <div className="ingredients__list">
                     {ingredients.map((item, index) => (
-                      <div key={index + 1}>{item}</div>
+                      <div className="ingredient__pair" key={index + 1}>
+                        <input type="checkbox" value={item} />
+                        <p className="ingredient__name">{item}</p>
+                      </div>
                     ))}
                   </div>
                 </div>
