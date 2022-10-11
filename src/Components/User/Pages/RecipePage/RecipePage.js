@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { db } from "../../../firebaseAuthConfig";
-import CookingThumbnail from "../../../Assets/images/cooking.png";
-import IngredientsThumbnail from "../../../Assets/images/recipe-book.png";
+import { db } from "../../../../firebaseAuthConfig";
+import CookingThumbnail from "../../../../Assets/images/cooking.png";
+import IngredientsThumbnail from "../../../../Assets/images/recipe-book.png";
 import "./RecipePage.scss";
-import CookingStep from "../CookingStep/CookingStep";
-import ClientHeader from "../ClientHeader/ClientHeader";
-import TimeStat from "../../../Assets/images/hourglass.png";
-import DifficultyStat from "../../../Assets/images/speedometer.png";
-import CaloriesStat from "../../../Assets/images/calories.png";
+import CookingStep from "../../CookingStep/CookingStep";
+import TimeStat from "../../../../Assets/images/hourglass.png";
+import DifficultyStat from "../../../../Assets/images/speedometer.png";
+import CaloriesStat from "../../../../Assets/images/calories.png";
+import { Link } from "react-router-dom";
 
 const RecipePage = () => {
   const [recipe, setRecipe] = useState([]);
   const [cookingSteps, setCookingSteps] = useState([]);
   const [ingredients, setIngredients] = useState([]);
-  let { id } = useParams();
+  let { cat, id } = useParams();
+  let uid = localStorage.getItem("userId");
 
   const handleCssEvent = () => {
     let tabHeader = document.getElementsByClassName(
@@ -48,6 +49,7 @@ const RecipePage = () => {
 
   const handleCssCutWord = () => {
     let ingredients = document.getElementsByClassName("ingredients__list")[0];
+    console.log(document.getElementsByClassName("ingredients__list")[0]);
     let ingredient = ingredients.getElementsByTagName("div");
     let checkboxes = ingredients.getElementsByTagName("input");
     let ingredientNames = ingredients.getElementsByTagName("p");
@@ -58,27 +60,38 @@ const RecipePage = () => {
       });
     }
   };
+  async function getRecipes() {
+    const docRef = db.collection("recipes").doc(id);
+    await docRef.get().then((doc) => {
+      setRecipe(doc.data());
+      setCookingSteps(doc.data().cooking_steps);
+      setIngredients(doc.data().recipe_ingredients);
+    });
+  }
 
   useEffect(() => {
-    async function getRecipes() {
-      const docRef = db.collection("recipes").doc(id);
-      await docRef.get().then((doc) => {
-        setRecipe(doc.data());
-        setCookingSteps(doc.data().cooking_steps);
-        setIngredients(doc.data().recipe_ingredients);
-      });
-    }
     getRecipes();
   }, []);
-
   useEffect(() => {
     handleCssEvent();
     handleCssCutWord();
+    console.log(uid);
   });
 
   return (
-    <>
-      <ClientHeader />
+    <div className="recipe__page">
+      <div className="breadcrumb__menu__container">
+        <div className="breadcrumb__menu">
+          <span>
+            <Link to={`/home`}>Home</Link>
+          </span>
+          /
+          <span>
+            <Link to={`/recipes/${cat}`}>{cat}</Link>
+          </span>
+          / <span className="breadcrumb__active__link">{id}</span>
+        </div>
+      </div>
       <div className="recipe__page__container">
         <div className="recipe__page__content">
           <div className="recipe__page__tab__header">
@@ -147,7 +160,7 @@ const RecipePage = () => {
           <img src={recipe.recipe_image} alt={recipe.recipe_name} />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,9 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { getDocs, query, where, collection } from "firebase/firestore";
+import { db } from "../../../../firebaseAuthConfig";
 import { Card, Button, Container, Form, Alert } from "react-bootstrap";
 import "./Login.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../../../Contexts/AuthContext";
+import { useAuth } from "../../../../Contexts/AuthContext";
 
 const Login = () => {
   const emailRef = useRef();
@@ -13,17 +15,31 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   let history = useHistory();
+
   async function handleSubmit(e) {
     e.preventDefault();
     try {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      history.push("/home");
-      localStorage.setItem("isLoggedIn", true);
+      const accountsRef = collection(db, "accounts");
+      const q = query(
+        accountsRef,
+        where("email", "==", emailRef.current.value)
+      );
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        // console.log(doc.data().isAdmin)
+        if (doc.data().isAdmin === true) {
+          history.push("/dashboard");
+        } else {
+          history.push("/home");
+        }
+      });
     } catch (error) {
-      setError("Failed to Log In");
+      setError("Failed to Log In" + error);
     }
+
     setLoading(false);
   }
 

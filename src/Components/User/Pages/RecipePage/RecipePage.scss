@@ -3,11 +3,35 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-.recipe__page__container {
+.recipe__page {
   width: 100%;
   max-width: 1400px;
-  margin: 200px auto 100px auto;
+  margin: 200px auto 0 auto;
+}
+.breadcrumb__menu__container {
+  width: 100%;
+  .breadcrumb__menu {
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: bold;
+    span {
+      margin: 0 20px;
+      transition: 0.2s;
+      a {
+        text-decoration: none;
+      }
+    }
+    .breadcrumb__active__link {
+      color: #e78300;
+    }
+    span:hover > a {
+    }
+  }
+}
+.recipe__page__container {
+  width: 100%;
+  margin: 50px auto 100px auto;
   display: flex;
   justify-content: center;
   border-radius: 30px;
