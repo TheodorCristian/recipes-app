@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/recipes-app/static/css/main.711ddce7.chunk.css",
-    "main.js": "/recipes-app/static/js/main.d8f3afa9.chunk.js",
-    "main.js.map": "/recipes-app/static/js/main.d8f3afa9.chunk.js.map",
+    "main.js": "/recipes-app/static/js/main.ba2ac751.chunk.js",
+    "main.js.map": "/recipes-app/static/js/main.ba2ac751.chunk.js.map",
     "runtime-main.js": "/recipes-app/static/js/runtime-main.35a81e07.js",
     "runtime-main.js.map": "/recipes-app/static/js/runtime-main.35a81e07.js.map",
     "static/css/2.ec473480.chunk.css": "/recipes-app/static/css/2.ec473480.chunk.css",
-    "static/js/2.5b63951f.chunk.js": "/recipes-app/static/js/2.5b63951f.chunk.js",
-    "static/js/2.5b63951f.chunk.js.map": "/recipes-app/static/js/2.5b63951f.chunk.js.map",
+    "static/js/2.8b69b97d.chunk.js": "/recipes-app/static/js/2.8b69b97d.chunk.js",
+    "static/js/2.8b69b97d.chunk.js.map": "/recipes-app/static/js/2.8b69b97d.chunk.js.map",
     "static/js/3.6740c46f.chunk.js": "/recipes-app/static/js/3.6740c46f.chunk.js",
     "static/js/3.6740c46f.chunk.js.map": "/recipes-app/static/js/3.6740c46f.chunk.js.map",
     "index.html": "/recipes-app/index.html",
     "static/css/2.ec473480.chunk.css.map": "/recipes-app/static/css/2.ec473480.chunk.css.map",
     "static/css/main.711ddce7.chunk.css.map": "/recipes-app/static/css/main.711ddce7.chunk.css.map",
-    "static/js/2.5b63951f.chunk.js.LICENSE.txt": "/recipes-app/static/js/2.5b63951f.chunk.js.LICENSE.txt",
+    "static/js/2.8b69b97d.chunk.js.LICENSE.txt": "/recipes-app/static/js/2.8b69b97d.chunk.js.LICENSE.txt",
     "static/media/calories.c1a61b1f.png": "/recipes-app/static/media/calories.c1a61b1f.png",
     "static/media/cooking.6ece8517.png": "/recipes-app/static/media/cooking.6ece8517.png",
     "static/media/bootstrap.min.css": "/recipes-app/static/media/glyphicons-halflings-regular.be810be3.woff2",
@@ -25,8 +25,8 @@
   "entrypoints": [
     "static/js/runtime-main.35a81e07.js",
     "static/css/2.ec473480.chunk.css",
-    "static/js/2.5b63951f.chunk.js",
+    "static/js/2.8b69b97d.chunk.js",
     "static/css/main.711ddce7.chunk.css",
-    "static/js/main.d8f3afa9.chunk.js"
+    "static/js/main.ba2ac751.chunk.js"
   ]
 }
