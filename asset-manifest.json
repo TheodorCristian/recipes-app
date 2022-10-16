@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/recipes-app/static/css/main.ab6e9af5.chunk.css",
+    "main.css": "/recipes-app/static/css/main.74c3e517.chunk.css",
     "main.js": "/recipes-app/static/js/main.6f28f4ad.chunk.js",
     "main.js.map": "/recipes-app/static/js/main.6f28f4ad.chunk.js.map",
     "runtime-main.js": "/recipes-app/static/js/runtime-main.0691e998.js",
@@ -12,7 +12,7 @@
     "static/js/3.0d103e3f.chunk.js.map": "/recipes-app/static/js/3.0d103e3f.chunk.js.map",
     "index.html": "/recipes-app/index.html",
     "static/css/2.ec473480.chunk.css.map": "/recipes-app/static/css/2.ec473480.chunk.css.map",
-    "static/css/main.ab6e9af5.chunk.css.map": "/recipes-app/static/css/main.ab6e9af5.chunk.css.map",
+    "static/css/main.74c3e517.chunk.css.map": "/recipes-app/static/css/main.74c3e517.chunk.css.map",
     "static/js/2.5c8fa44f.chunk.js.LICENSE.txt": "/recipes-app/static/js/2.5c8fa44f.chunk.js.LICENSE.txt",
     "static/media/calories.c1a61b1f.png": "/recipes-app/static/media/calories.c1a61b1f.png",
     "static/media/cooking.6ece8517.png": "/recipes-app/static/media/cooking.6ece8517.png",
@@ -26,7 +26,7 @@
     "static/js/runtime-main.0691e998.js",
     "static/css/2.ec473480.chunk.css",
     "static/js/2.5c8fa44f.chunk.js",
-    "static/css/main.ab6e9af5.chunk.css",
+    "static/css/main.74c3e517.chunk.css",
     "static/js/main.6f28f4ad.chunk.js"
   ]
 }
