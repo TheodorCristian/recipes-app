@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/recipes-app/static/css/main.711ddce7.chunk.css",
-    "main.js": "/recipes-app/static/js/main.07c117c1.chunk.js",
-    "main.js.map": "/recipes-app/static/js/main.07c117c1.chunk.js.map",
-    "runtime-main.js": "/recipes-app/static/js/runtime-main.35a81e07.js",
-    "runtime-main.js.map": "/recipes-app/static/js/runtime-main.35a81e07.js.map",
+    "main.css": "/recipes-app/static/css/main.499cb575.chunk.css",
+    "main.js": "/recipes-app/static/js/main.f3395656.chunk.js",
+    "main.js.map": "/recipes-app/static/js/main.f3395656.chunk.js.map",
+    "runtime-main.js": "/recipes-app/static/js/runtime-main.12930028.js",
+    "runtime-main.js.map": "/recipes-app/static/js/runtime-main.12930028.js.map",
     "static/css/2.ec473480.chunk.css": "/recipes-app/static/css/2.ec473480.chunk.css",
-    "static/js/2.8b69b97d.chunk.js": "/recipes-app/static/js/2.8b69b97d.chunk.js",
-    "static/js/2.8b69b97d.chunk.js.map": "/recipes-app/static/js/2.8b69b97d.chunk.js.map",
-    "static/js/3.6740c46f.chunk.js": "/recipes-app/static/js/3.6740c46f.chunk.js",
-    "static/js/3.6740c46f.chunk.js.map": "/recipes-app/static/js/3.6740c46f.chunk.js.map",
+    "static/js/2.9c8f2f01.chunk.js": "/recipes-app/static/js/2.9c8f2f01.chunk.js",
+    "static/js/2.9c8f2f01.chunk.js.map": "/recipes-app/static/js/2.9c8f2f01.chunk.js.map",
+    "static/js/3.b8b9c6a0.chunk.js": "/recipes-app/static/js/3.b8b9c6a0.chunk.js",
+    "static/js/3.b8b9c6a0.chunk.js.map": "/recipes-app/static/js/3.b8b9c6a0.chunk.js.map",
     "index.html": "/recipes-app/index.html",
     "static/css/2.ec473480.chunk.css.map": "/recipes-app/static/css/2.ec473480.chunk.css.map",
-    "static/css/main.711ddce7.chunk.css.map": "/recipes-app/static/css/main.711ddce7.chunk.css.map",
-    "static/js/2.8b69b97d.chunk.js.LICENSE.txt": "/recipes-app/static/js/2.8b69b97d.chunk.js.LICENSE.txt",
+    "static/css/main.499cb575.chunk.css.map": "/recipes-app/static/css/main.499cb575.chunk.css.map",
+    "static/js/2.9c8f2f01.chunk.js.LICENSE.txt": "/recipes-app/static/js/2.9c8f2f01.chunk.js.LICENSE.txt",
     "static/media/calories.c1a61b1f.png": "/recipes-app/static/media/calories.c1a61b1f.png",
     "static/media/cooking.6ece8517.png": "/recipes-app/static/media/cooking.6ece8517.png",
     "static/media/bootstrap.min.css": "/recipes-app/static/media/glyphicons-halflings-regular.be810be3.woff2",
@@ -23,10 +23,10 @@
     "static/media/speedometer.a6f87529.png": "/recipes-app/static/media/speedometer.a6f87529.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.35a81e07.js",
+    "static/js/runtime-main.12930028.js",
     "static/css/2.ec473480.chunk.css",
-    "static/js/2.8b69b97d.chunk.js",
-    "static/css/main.711ddce7.chunk.css",
-    "static/js/main.07c117c1.chunk.js"
+    "static/js/2.9c8f2f01.chunk.js",
+    "static/css/main.499cb575.chunk.css",
+    "static/js/main.f3395656.chunk.js"
   ]
 }
