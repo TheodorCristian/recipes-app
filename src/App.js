@@ -26,20 +26,38 @@ const App = () => {
       <AuthProvider>
         <Router>
           <Routes>
-            <Route path="/recipes-app/" element={<Navigate replace to="/recipes-app/login" />} />
+            <Route
+              path="/recipes-app/"
+              element={<Navigate replace to="/recipes-app/login" />}
+            />
             <Route path="/recipes-app/signup" element={<Signup />} />
             <Route path="/recipes-app/login" element={<Login />} />
             <Route path="/recipes-app/home" element={<Home />} />
-            <Route path="/recipes/:id" element={<CategoryPage />} />
-            <Route path="/recipes/:cat/:id" element={<RecipePage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/add-recipe" element={<AddRecipe />} />
-            <Route path="/add-category" element={<AddCategory />} />
-            <Route path="/add-ingredient" element={<AddIngredient />} />
-            <Route path="/edit-recipe/:id" element={<EditRecipe />} />
-            <Route path="/edit-category/:id" element={<EditCategory />} />
-            <Route path="/edit-ingredient/:id" element={<EditIngredient />} />
-            <Route path="/profile" element={<UserProfile />} />
+            <Route path="/recipes-app/recipes/:id" element={<CategoryPage />} />
+            <Route
+              path="/recipes-app/recipes/:cat/:id"
+              element={<RecipePage />}
+            />
+            <Route path="/recipes-app/dashboard" element={<Dashboard />} />
+            <Route path="/recipes-app/add-recipe" element={<AddRecipe />} />
+            <Route path="/recipes-app/add-category" element={<AddCategory />} />
+            <Route
+              path="/recipes-app/add-ingredient"
+              element={<AddIngredient />}
+            />
+            <Route
+              path="/recipes-app/edit-recipe/:id"
+              element={<EditRecipe />}
+            />
+            <Route
+              path="/recipes-app/edit-category/:id"
+              element={<EditCategory />}
+            />
+            <Route
+              path="/recipes-app/edit-ingredient/:id"
+              element={<EditIngredient />}
+            />
+            <Route path="/recipes-app/profile" element={<UserProfile />} />
           </Routes>
         </Router>
       </AuthProvider>
