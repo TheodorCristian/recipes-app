@@ -26,10 +26,10 @@ const App = () => {
       <AuthProvider>
         <Router>
           <Routes>
-            <Route path="/" element={<Navigate replace to="/login" />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/recipes-app/" element={<Navigate replace to="/recipes-app/login" />} />
+            <Route path="/recipes-app/signup" element={<Signup />} />
+            <Route path="/recipes-app/login" element={<Login />} />
+            <Route path="/recipes-app/home" element={<Home />} />
             <Route path="/recipes/:id" element={<CategoryPage />} />
             <Route path="/recipes/:cat/:id" element={<RecipePage />} />
             <Route path="/dashboard" element={<Dashboard />} />
