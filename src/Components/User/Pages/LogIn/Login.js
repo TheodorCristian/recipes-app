@@ -103,7 +103,7 @@ const Login = () => {
           <div className="w-100 text-center mt-2">
             <p>
               Don't have a valid Account?{" "}
-              <Link to="/signup">Create Account</Link>
+              <Link to="/recipes-app/signup">Create Account</Link>
             </p>
           </div>
         </div>

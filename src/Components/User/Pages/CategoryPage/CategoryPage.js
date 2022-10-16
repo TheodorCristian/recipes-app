@@ -78,7 +78,7 @@ const CategoryPage = () => {
         <div className="breadcrumb__menu__container">
           <div className="breadcrumb__menu">
             <span>
-              <Link to={`/home`}>Home</Link>
+              <Link to={`/recipes-app/home`}>Home</Link>
             </span>
             / <span className="breadcrumb__active__link">{id}</span>
           </div>
@@ -89,7 +89,7 @@ const CategoryPage = () => {
               {allCategories.map((item, index) => {
                 return (
                   <li className="category" key={index}>
-                    <Link to={`/recipes/${item.category_name}`}>
+                    <Link to={`/recipes-app/recipes/${item.category_name}`}>
                       {item.category_name}
                     </Link>
                   </li>
