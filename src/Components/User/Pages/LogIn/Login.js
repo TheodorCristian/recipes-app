@@ -26,9 +26,9 @@ const Login = () => {
     querySnapshot.forEach((doc) => {
       // console.log(doc.data().isAdmin)
       if (doc.data().isAdmin === true) {
-        navigate("/dashboard");
+        navigate("/recipes-app/dashboard");
       } else {
-        navigate("/home");
+        navigate("/recipes-app/home");
       }
     });
   }
@@ -48,9 +48,9 @@ const Login = () => {
       querySnapshot.forEach((doc) => {
         localStorage.setItem("currentUser", doc.data().uid);
         if (doc.data().isAdmin === true) {
-          navigate("/dashboard");
+          navigate("/recipes-app/dashboard");
         } else {
-          navigate("/home");
+          navigate("/recipes-app/home");
         }
       });
     } catch (error) {

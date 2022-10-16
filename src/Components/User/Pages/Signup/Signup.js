@@ -51,7 +51,7 @@ const Signup = () => {
         uid: user.uid,
       };
       await addDoc(collection(db, "accounts"), data);
-      navigate("/home");
+      navigate("/recipes-app/home");
     } catch (error) {
       setError("Failed to create an account");
       console.log(error);
