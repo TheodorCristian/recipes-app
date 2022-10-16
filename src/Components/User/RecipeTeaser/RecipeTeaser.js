@@ -23,7 +23,7 @@ const RecipeTeaser = ({
   return (
     <div className="recipe__teaser">
       <div className="recipe__teaser__image">
-        <Link to={`/recipes/${category}/${url}`}>
+        <Link to={`/recipes-app/recipes/${category}/${url}`}>
           <img src={image} alt="Recipe" />
         </Link>
       </div>
