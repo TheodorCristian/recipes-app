@@ -5,7 +5,7 @@ import { db } from "../../../../firebaseAuthConfig";
 import { Card, Button, Container, Form, Alert } from "react-bootstrap";
 import "./Signup.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../../Contexts/AuthContext";
 
 const Signup = () => {
@@ -15,10 +15,10 @@ const Signup = () => {
   const firstNameRef = useRef();
   const lastNameRef = useRef();
 
-  const { signup, login, currentUser } = useAuth();
+  const { signup, login } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  let history = useHistory();
+  let navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -51,7 +51,7 @@ const Signup = () => {
         uid: user.uid,
       };
       await addDoc(collection(db, "accounts"), data);
-      history.push("/home");
+      navigate("/home");
     } catch (error) {
       setError("Failed to create an account");
       console.log(error);

@@ -2,17 +2,17 @@ import React from "react";
 import "./ProfileNavbarIcon.scss";
 import ProfileIcon from "../../../Assets/images/profile.png";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../Contexts/AuthContext";
 
 function ProfileNavbarIcon() {
   const { logout } = useAuth();
-  let history = useHistory();
+  let navigate = useNavigate();
 
   async function handleLogout() {
     await logout();
     localStorage.setItem("isLoggedIn", false);
-    history.push("/login");
+    navigate("/login");
   }
   return (
     <div className="profile__icon">

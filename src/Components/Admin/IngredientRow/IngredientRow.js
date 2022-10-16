@@ -1,13 +1,13 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../../firebaseAuthConfig";
 import "./IngredientRow.scss";
 
 const IngredientRow = ({ name, id }) => {
-  let history = useHistory();
+  let navigate = useNavigate();
   const handleEdit = () => {
-    history.push(`/edit-ingredient/${id}`);
+    navigate(`/edit-ingredient/${id}`);
   };
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete " + name + "?")) {

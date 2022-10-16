@@ -4,7 +4,7 @@ import { db, storage } from "../../../firebaseAuthConfig";
 import { doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { createId } from "../../../Utils/utils";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./AddRecipe.scss";
 
 const AddRecipe = () => {
@@ -26,7 +26,7 @@ const AddRecipe = () => {
   let cookingStepRef = useRef();
   let imageRef = useRef();
 
-  let history = useHistory();
+  let history = useNavigate();
 
   async function addRecipe(e) {
     let data = {};

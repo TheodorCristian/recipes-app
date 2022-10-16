@@ -26,6 +26,7 @@ export function AuthProvider({ children }) {
   }
 
   function logout() {
+    localStorage.setItem("currentUser", "");
     return auth.signOut();
   }
 

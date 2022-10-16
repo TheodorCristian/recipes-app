@@ -108,3 +108,19 @@
     }
   }
 }
+@media screen and (max-width: 1200px) {
+  .category__page__content {
+    position: relative;
+    .category__page__presentation {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .category__page__details {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

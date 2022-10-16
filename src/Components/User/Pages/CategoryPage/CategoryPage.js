@@ -56,6 +56,7 @@ const CategoryPage = () => {
     getAllCategories();
     getCategories();
     getRecipes();
+    console.log("something");
   }, [id]);
   return (
     <>

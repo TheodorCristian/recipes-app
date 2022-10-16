@@ -4,7 +4,7 @@ import { db } from "../../../../firebaseAuthConfig";
 import { Card, Button, Container, Form, Alert } from "react-bootstrap";
 import "./Login.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../../Contexts/AuthContext";
 
 const Login = () => {
@@ -14,7 +14,24 @@ const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  let history = useHistory();
+  let navigate = useNavigate();
+
+  async function getCurrentUser() {
+    const accountsRef = collection(db, "accounts");
+    const q = query(
+      accountsRef,
+      where("uid", "==", localStorage.getItem("currentUser"))
+    );
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // console.log(doc.data().isAdmin)
+      if (doc.data().isAdmin === true) {
+        navigate("/dashboard");
+      } else {
+        navigate("/home");
+      }
+    });
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -29,11 +46,11 @@ const Login = () => {
       );
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        // console.log(doc.data().isAdmin)
+        localStorage.setItem("currentUser", doc.data().uid);
         if (doc.data().isAdmin === true) {
-          history.push("/dashboard");
+          navigate("/dashboard");
         } else {
-          history.push("/home");
+          navigate("/home");
         }
       });
     } catch (error) {
@@ -42,6 +59,16 @@ const Login = () => {
 
     setLoading(false);
   }
+
+  useEffect(() => {
+    if (
+      localStorage.getItem("currentUser") !== "" &&
+      localStorage.getItem("currentUser") !== undefined &&
+      localStorage.getItem("currentUser") !== null
+    ) {
+      getCurrentUser();
+    }
+  }, []);
 
   return (
     <>

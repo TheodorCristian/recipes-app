@@ -206,3 +206,93 @@
     }
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .recipe__page {
+    margin: 150px auto 0 auto;
+    .recipe__page__container {
+      width: 90%;
+      max-width: 700px;
+      margin: 50px auto;
+      flex-direction: column-reverse;
+      .recipe__page__image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+          width: 90%;
+          max-width: 500px;
+          margin-top: 100px;
+          height: auto;
+          border-bottom-right-radius: 0;
+          border-top-right-radius: 0;
+        }
+      }
+      .recipe__page__content {
+        width: 100%;
+        margin: 20px auto;
+        .recipe__page__tab__body {
+          height: 500px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .recipe__page {
+    .recipe__page__container {
+      .recipe__page__image {
+        img {
+          margin-top: 30px;
+        }
+      }
+      .recipe__page__content {
+        width: 100%;
+        margin: 20px auto;
+        .recipe__page__tab__body {
+          height: 500px;
+          .recipe__page__tab__body__info {
+            height: 470px;
+          }
+          .recipe__description__container {
+            flex-direction: column;
+            margin: 0;
+            .recipe__ingredients__container {
+              width: 90%;
+              margin: 0 auto;
+              .ingredients__list {
+                .ingredient__pair {
+                  flex: 50%;
+                  width: auto;
+                  margin-right: 0;
+                }
+                .ingredient__pair:nth-child(even) {
+                  padding-left: 10px;
+                }
+              }
+              .ingredients__list:nth-child(even) {
+                margin-right: 10px;
+              }
+            }
+            .recipe__description__content {
+              width: 90%;
+              margin: 30px auto;
+            }
+          }
+          .cooking__step__container {
+            margin: 10px;
+            padding: 10px;
+            .cooking__step__id {
+              width: 30px;
+              height: 30px;
+            }
+            .cooking__step__instructions {
+              width: calc(100% - 50px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
