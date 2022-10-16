@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 const UserProfile = () => {
-  return <div>This is user component</div>;
+
+
+  return <div>
+    
+  </div>;
 };
 
 export default UserProfile;

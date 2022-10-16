@@ -19,7 +19,6 @@ function ProfileNavbarIcon() {
       <Link to="/recipes-app/profile">
         <img src={ProfileIcon} alt="Profile Icon" />
       </Link>
-      <button onClick={handleLogout}>Log out</button>
     </div>
   );
 }
