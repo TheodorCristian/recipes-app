@@ -12,11 +12,11 @@ function ProfileNavbarIcon() {
   async function handleLogout() {
     await logout();
     localStorage.setItem("isLoggedIn", false);
-    navigate("/login");
+    navigate("/recipes-app/login");
   }
   return (
     <div className="profile__icon">
-      <Link to="/profile">
+      <Link to="/recipes-app/profile">
         <img src={ProfileIcon} alt="Profile Icon" />
       </Link>
       <button onClick={handleLogout}>Log out</button>
