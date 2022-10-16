@@ -8,7 +8,7 @@ const ClientHeader = () => {
   return (
     <div className="navigation">
       <div className="logo__container">
-        <Link to="/home">
+        <Link to="/recipes-app/home">
           <img src={Logo} alt="Logo" />
         </Link>
       </div>
