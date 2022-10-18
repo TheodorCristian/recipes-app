@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { getDocs, query, where, collection } from "firebase/firestore";
 import { db } from "../../../../firebaseAuthConfig";
 import { Card, Button, Container, Form, Alert } from "react-bootstrap";
@@ -20,7 +20,7 @@ const Login = () => {
     const accountsRef = collection(db, "accounts");
     const q = query(
       accountsRef,
-      where("uid", "==", localStorage.getItem("currentUser"))
+      where("uid", "==", sessionStorage.getItem("currentUser"))
     );
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -46,7 +46,7 @@ const Login = () => {
       );
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        localStorage.setItem("currentUser", doc.data().uid);
+        sessionStorage.setItem("currentUser", doc.data().uid);
         if (doc.data().isAdmin === true) {
           navigate("/recipes-app/dashboard");
         } else {
@@ -60,11 +60,11 @@ const Login = () => {
     setLoading(false);
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (
-      localStorage.getItem("currentUser") !== "" &&
-      localStorage.getItem("currentUser") !== undefined &&
-      localStorage.getItem("currentUser") !== null
+      sessionStorage.getItem("currentUser") !== "" &&
+      sessionStorage.getItem("currentUser") !== undefined &&
+      sessionStorage.getItem("currentUser") !== null
     ) {
       getCurrentUser();
     }

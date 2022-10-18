@@ -16,7 +16,7 @@ const RecipePage = () => {
   const [cookingSteps, setCookingSteps] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   let { cat, id } = useParams();
-  let uid = localStorage.getItem("userId");
+  let uid = sessionStorage.getItem("userId");
 
   const handleCssEvent = () => {
     let tabHeader = document.getElementsByClassName(

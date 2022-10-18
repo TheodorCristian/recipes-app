@@ -11,7 +11,7 @@ function ProfileNavbarIcon() {
 
   async function handleLogout() {
     await logout();
-    localStorage.setItem("isLoggedIn", false);
+    sessionStorage.setItem("isLoggedIn", false);
     navigate("/recipes-app/login");
   }
   return (

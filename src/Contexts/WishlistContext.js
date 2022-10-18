@@ -8,7 +8,7 @@
 
 // export function WishlistProvider({ children }) {
 //   const [wishlist, setWishlist] = useState([]);
-//   const wishlistItem = localStorage.getItem("wishlistStorage");
+//   const wishlistItem = sessionStorage.getItem("wishlistStorage");
 //   useEffect(() => {
 //     console.log(wishlistItem);
 //   }, []);
