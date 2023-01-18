@@ -4,12 +4,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Dashboard.scss";
 import RecipeRow from "../RecipeRow/RecipeRow";
 import { createId } from "../../../Utils/utils";
-import CategoryRow from "../CategoryRow/CategoryRow";
 import IngredientRow from "../IngredientRow/IngredientRow";
+import { UserAuth } from "../../../Contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const {logout, user, setUser, setIsAdmin} = UserAuth();
   const [recipes, setRecipes] = useState([]);
   const [ingredients, setIngredients] = useState([]);
+  const navigate = useNavigate();
 
   async function getRecipes() {
     const colRef = await db.collection("recipes");
@@ -18,6 +21,17 @@ const Dashboard = () => {
         setRecipes((current) => [...current, doc.data()]);
       });
     });
+  }
+
+  const logOut = async () => {
+    try {
+      await logout();
+      await setUser({});
+      await setIsAdmin(false);
+      navigate('/recipes-app/login');
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   async function getIngredients() {
@@ -37,6 +51,7 @@ const Dashboard = () => {
   return (
     <>
       <div className="admin__dashboard">
+      <button onClick={logOut}>LGO OUT</button>
         <div className="admin__left__panel">leftside</div>
         <div className="admin__right__panel">
           <div className="admin__recipe__table">

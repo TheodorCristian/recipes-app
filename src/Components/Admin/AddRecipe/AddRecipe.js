@@ -4,8 +4,8 @@ import { db, storage } from "../../../firebaseAuthConfig";
 import { doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { createId } from "../../../Utils/utils";
-import { useNavigate } from "react-router-dom";
 import "./AddRecipe.scss";
+import Add from "../../../Assets/images/add.png";
 
 const AddRecipe = () => {
   const [loading, setLoading] = useState(false);
@@ -25,8 +25,6 @@ const AddRecipe = () => {
   let recipeDifficultyRef = useRef();
   let cookingStepRef = useRef();
   let imageRef = useRef();
-
-  let history = useNavigate();
 
   async function addRecipe(e) {
     let data = {};
@@ -53,8 +51,8 @@ const AddRecipe = () => {
       setTimeout(() => {
         window.location.reload(false);
       }, 1000);
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
     }
     setLoading(false);
   }
@@ -77,7 +75,14 @@ const AddRecipe = () => {
     });
   }
   async function checkIngredient(e) {
-    await setCheckedIngredients((current) => [...current, e.target.value]);
+    if (e.target.checked === true) {
+      await setCheckedIngredients((current) => [...current, e.target.value]);
+    } else {
+      let helperArr = [...checkedIngredients];
+      let index = helperArr.indexOf(e.target.value);
+      helperArr.splice(index, 1);
+      await setCheckedIngredients(helperArr);
+    }
   }
 
   async function checkCategory(e) {
@@ -109,7 +114,6 @@ const AddRecipe = () => {
       (error) => console.log(error),
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          console.log(url);
           setImageUrl(url);
         });
       }
@@ -154,13 +158,20 @@ const AddRecipe = () => {
         </Alert>
       )}
       {loading && <div className="overlayer"> </div>}
-      <div className="">
+      <div className="add__recipe__container">
         <div>
-          <div id="recipeName">
-            <p>Recipe Name</p>
-            <input type="text" ref={recipeNameRef} required />
+          <div id="recipeName" className="form__field">
+            <p className="form__label">Recipe Name</p>
+            <input
+              type="text"
+              ref={recipeNameRef}
+              required
+              className="form__input"
+              placeholder="E.g.: Mac and Cheese"
+            />
           </div>
-          <div>
+          <div className="form__field">
+            <p className="form__label">Category Name</p>
             <select onChange={checkCategory} defaultValue="choose">
               <option value="choose" disabled>
                 Choose Category
@@ -174,37 +185,69 @@ const AddRecipe = () => {
               })}
             </select>
           </div>
-          <div id="recipeDescription">
-            <p>Recipe Description</p>
-            <input type="text" ref={recipeDescriptionRef} required />
-          </div>
-          <div id="recipeCalories">
-            <p>Number calories / portion</p>
-            <input type="text" ref={recipeCaloriesRef} required />
-          </div>
-          <div id="recipeDuration">
-            <p>Recipe Preparation Time (preparation + cooking)</p>
-            <input type="text" ref={recipeDurationRef} required />
-          </div>
-          <div id="recipeDifficulty">
-            <p>Recipe difficulty (easy, medium, hard)</p>
-            <input type="text" ref={recipeDifficultyRef} required />
-          </div>
-          <div>
+          <div id="recipeDescription" className="form__field">
+            <p className="form__label">Recipe Description</p>
             <input
               type="text"
-              ref={cookingStepRef}
-              placeholder="Cooking step"
+              ref={recipeDescriptionRef}
+              required
+              className="form__input"
+              placeholder="E.g.: Quick, easy, and tasty macaroni and cheese dish. "
             />
-            <button onClick={addCookingStep}>Add Cooking step</button>
+          </div>
+          <div id="recipeCalories" className="form__field">
+            <p className="form__label">Number of calories / portion</p>
+            <input
+              type="text"
+              ref={recipeCaloriesRef}
+              required
+              className="form__input"
+              placeholder="E.g.: 254"
+            />
+          </div>
+          <div id="recipeDuration" className="form__field">
+            <p className="form__label">
+              Recipe Preparation Time (preparation + cooking)
+            </p>
+            <input
+              type="text"
+              ref={recipeDurationRef}
+              required
+              className="form__input"
+              placeholder="E.g.: 50"
+            />
+          </div>
+          <div id="recipeDifficulty" className="form__field">
+            <p className="form__label">
+              Recipe difficulty (easy, medium, hard)
+            </p>
+            <input
+              type="text"
+              ref={recipeDifficultyRef}
+              required
+              className="form__input"
+              placeholder="E.g.: easy"
+            />
+          </div>
+          <div className="form__field">
+            <p className="form__label">Cooking steps</p>
+            <div className="add__ingredient">
+              <input
+                type="text"
+                ref={cookingStepRef}
+                placeholder="Cooking step"
+                className="form__input"
+              />
+              <img onClick={addCookingStep} src={Add}></img>
+            </div>
             <ol>
               {cookingSteps.map((item, index) => {
-                console.log(item);
                 return <li key={index}>{item}</li>;
               })}
             </ol>
           </div>
-          <div className="admin__recipe__ingredients">
+          <div className="admin__recipe__ingredients form__field">
+            <p className="form__label">Choose Ingredients</p>
             {ingredients.map((item, index) => {
               return (
                 <div key={index} className="admin__recipe__ingredient">
@@ -212,7 +255,7 @@ const AddRecipe = () => {
                     type="checkbox"
                     name={createId(item.ingredient_name)}
                     value={createId(item.ingredient_name)}
-                    onChange={checkIngredient}
+                    onClick={checkIngredient}
                     className="admin__ingredient__input"
                   />
                   <p className="admin__ingredient__label">
@@ -222,12 +265,15 @@ const AddRecipe = () => {
               );
             })}
           </div>
-          <div>
-            <input type="file" ref={imageRef} />
-            <button onClick={handleImageUpload}>Upload image</button>
-          </div>
-          <div>
-            <h3>Progress: {progress} %</h3>
+          <div className="form__field">
+            <p className="form__label">Recipe Image</p>
+            <div className="add__image">
+              <input type="file" ref={imageRef} className="form__input" />
+              <img onClick={handleImageUpload} src={Add}></img>
+            </div>
+            <div>
+              <h3>Progress: {progress} %</h3>
+            </div>
           </div>
           <Button disabled={loading} onClick={addRecipe}>
             Add

@@ -1,0 +1,119 @@
+.recipe__teaser {
+  width: 300px;
+  height: 450px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 30px;
+  border-radius: 20px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.recipe__teaser .recipe__teaser__image {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.recipe__teaser .recipe__teaser__image img {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.recipe__teaser .recipe__description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 250px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 20px;
+}
+
+.recipe__teaser .recipe__description h5 {
+  margin: 10px 0;
+  text-transform: uppercase;
+  color: #00acee;
+  font-weight: bold;
+  font-size: 12px;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.recipe__teaser .recipe__description h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.recipe__teaser .recipe__stats {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px;
+}
+
+.recipe__teaser .recipe__stats .recipe__stat {
+  padding: 10px;
+  border-right: 1px solid #333;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.recipe__teaser .recipe__stats .recipe__stat span img {
+  width: 25px;
+}
+
+.recipe__teaser .recipe__stats .recipe__stat p {
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0 5px;
+  height: 100%;
+}
+
+.recipe__teaser:hover {
+  text-decoration: none;
+}
+/*# sourceMappingURL=RecipeTeaser.css.map */

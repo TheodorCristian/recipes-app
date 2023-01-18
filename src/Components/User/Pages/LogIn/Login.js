@@ -1,74 +1,47 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
-import { getDocs, query, where, collection } from "firebase/firestore";
-import { db } from "../../../../firebaseAuthConfig";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useLayoutEffect,
+  useContext,
+} from "react";
 import { Card, Button, Container, Form, Alert } from "react-bootstrap";
 import "./Login.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../../../Contexts/AuthContext";
+import { UserAuth } from "../../../../Contexts/AuthContext";
+import { getAccount } from "../../../../Utils/utils";
+import { getAuth } from "firebase/auth";
 
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login } = useAuth();
+  const { login } = UserAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   let navigate = useNavigate();
-
-  async function getCurrentUser() {
-    const accountsRef = collection(db, "accounts");
-    const q = query(
-      accountsRef,
-      where("uid", "==", sessionStorage.getItem("currentUser"))
-    );
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      // console.log(doc.data().isAdmin)
-      if (doc.data().isAdmin === true) {
-        navigate("/recipes-app/dashboard");
-      } else {
-        navigate("/recipes-app/home");
-      }
-    });
-  }
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
       setError("");
       setLoading(true);
+
       await login(emailRef.current.value, passwordRef.current.value);
-      const accountsRef = collection(db, "accounts");
-      const q = query(
-        accountsRef,
-        where("email", "==", emailRef.current.value)
-      );
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        sessionStorage.setItem("currentUser", doc.data().uid);
-        if (doc.data().isAdmin === true) {
-          navigate("/recipes-app/dashboard");
-        } else {
-          navigate("/recipes-app/home");
-        }
-      });
+      let systemUser = await getAuth().currentUser;
+      let accountRez = await getAccount(systemUser.uid);
+      sessionStorage.setItem("systemUserId", systemUser.uid);
+      sessionStorage.setItem("user",  JSON.stringify(accountRez));
+      sessionStorage.setItem("isAdmin", accountRez.isAdmin);
+      accountRez.isAdmin
+        ? navigate("/recipes-app/dashboard")
+        : navigate("/recipes-app/home");
     } catch (error) {
       setError("Failed to Log In" + error);
     }
-
     setLoading(false);
   }
-
-  useLayoutEffect(() => {
-    if (
-      sessionStorage.getItem("currentUser") !== "" &&
-      sessionStorage.getItem("currentUser") !== undefined &&
-      sessionStorage.getItem("currentUser") !== null
-    ) {
-      getCurrentUser();
-    }
-  }, []);
 
   return (
     <>

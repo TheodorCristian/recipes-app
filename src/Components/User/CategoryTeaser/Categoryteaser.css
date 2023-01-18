@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.category__teaser__card {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 250px;
+  height: 400px;
+  margin: 30px;
+  border-radius: 20px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.category__teaser__card .category__teaser__circle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #ddd;
+  -webkit-clip-path: circle(180px at center 0);
+          clip-path: circle(180px at center 0);
+  text-align: center;
+}
+
+.category__teaser__card .category__teaser__circle img {
+  max-width: 80px;
+  padding: 30px 0;
+}
+
+.category__teaser__card .category__teaser__content {
+  position: absolute;
+  bottom: 10px;
+  padding: 20px 10px 10px 10px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 235px;
+}
+
+.category__teaser__card .category__teaser__content h1 {
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #000;
+}
+
+.category__teaser__card .category__teaser__content p {
+  font-size: 12px;
+}
+
+.category__teaser__card .category__teaser__content .category__teaser__cta {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  background: #888;
+  color: #fff;
+  border-radius: 20px;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+.category__teaser__card .category__teaser__content .category__teaser__cta span {
+  text-transform: capitalize;
+}
+/*# sourceMappingURL=Categoryteaser.css.map */

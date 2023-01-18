@@ -5,6 +5,7 @@ import { db } from "../../../../firebaseAuthConfig";
 import ClientHeader from "../../ClientHeader/ClientHeader";
 import RecipeTeaser from "../../RecipeTeaser/RecipeTeaser";
 import { Link } from "react-router-dom";
+import Back from "../../../General/Back/Back";
 
 const CategoryPage = () => {
   const [category, setCategory] = useState([]);
@@ -34,7 +35,6 @@ const CategoryPage = () => {
     colRef.get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         cat.push(doc.data());
-        console.log(cat);
       });
       setAllCategories(cat);
     });
@@ -48,7 +48,6 @@ const CategoryPage = () => {
       });
 
       setRecipes(rec);
-      console.log(recipes);
     });
   };
 
@@ -56,7 +55,6 @@ const CategoryPage = () => {
     getAllCategories();
     getCategories();
     getRecipes();
-    console.log("something");
   }, [id]);
   return (
     <>
@@ -112,11 +110,11 @@ const CategoryPage = () => {
                   calories={recipe.recipe_calories}
                 />
               );
-              // console.log(recipe);
             })}
           </div>
         </div>
       </div>
+      <Back />
     </>
   );
 };

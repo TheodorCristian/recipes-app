@@ -1,0 +1,65 @@
+.admin__dashboard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+}
+
+.admin__dashboard .admin__left__panel {
+  width: 20%;
+  background: #eee;
+  border-right: 1px solid #ddd;
+}
+
+.admin__dashboard .admin__right__panel {
+  width: 80%;
+  background: #555;
+  padding: 50px;
+}
+
+.admin__dashboard .admin__right__panel .admin__recipe__table {
+  background: #eee;
+  width: 100%;
+  padding: 30px;
+}
+
+.admin__dashboard .admin__right__panel .admin__category__recipe__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.admin__dashboard .admin__right__panel .admin__category__recipe__container .admin__category__table {
+  background: #eee;
+  width: 50%;
+  padding: 30px;
+  margin-right: 50px;
+}
+
+.admin__dashboard .admin__right__panel .admin__category__recipe__container .admin__ingredient__table {
+  background: #eee;
+  width: 50%;
+  padding: 30px;
+}
+
+.admin__buttons__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.admin__buttons__container div {
+  padding: 10px;
+  border: 1px solid red;
+}
+
+.admin__buttons__container:nth-last-child() {
+  margin-left: 20px;
+}
+/*# sourceMappingURL=Dashboard.css.map */

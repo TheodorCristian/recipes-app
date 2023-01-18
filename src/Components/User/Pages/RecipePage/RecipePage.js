@@ -10,13 +10,23 @@ import DifficultyStat from "../../../../Assets/images/speedometer.png";
 import CaloriesStat from "../../../../Assets/images/calories.png";
 import ClientHeader from "../../ClientHeader/ClientHeader";
 import { Link } from "react-router-dom";
+import {
+  getDoc,
+  doc,
+  updateDoc,
+  arrayUnion,
+} from "firebase/firestore";
+import Back from "../../../General/Back/Back";
+
 
 const RecipePage = () => {
   const [recipe, setRecipe] = useState([]);
   const [cookingSteps, setCookingSteps] = useState([]);
   const [ingredients, setIngredients] = useState([]);
+
   let { cat, id } = useParams();
-  let uid = sessionStorage.getItem("userId");
+  let user = JSON.parse(sessionStorage.getItem("user"));
+
 
   const handleCssEvent = () => {
     let tabHeader = document.getElementsByClassName(
@@ -44,13 +54,17 @@ const RecipePage = () => {
     }
   };
 
-  const addToWishlist = () => {
-    alert("This feature will be implemented soon!");
+  const addToWishlist = async (recipeId) => {
+    const accountRef = doc(db, "accounts", user.accountRef);
+    console.log(accountRef);
+    await updateDoc(accountRef, {
+      wishlist: arrayUnion(recipeId),
+    });
+    console.log("recipe added");
   };
 
   const handleCssCutWord = () => {
     let ingredients = document.getElementsByClassName("ingredients__list")[0];
-    console.log(document.getElementsByClassName("ingredients__list")[0]);
     let ingredient = ingredients.getElementsByTagName("div");
     let checkboxes = ingredients.getElementsByTagName("input");
     let ingredientNames = ingredients.getElementsByTagName("p");
@@ -62,22 +76,20 @@ const RecipePage = () => {
     }
   };
   async function getRecipes() {
-    const docRef = db.collection("recipes").doc(id);
-    await docRef.get().then((doc) => {
-      setRecipe(doc.data());
-      setCookingSteps(doc.data().cooking_steps);
-      setIngredients(doc.data().recipe_ingredients);
-    });
+    const docRef = doc(db, "recipes", id);
+    const docSnap = await getDoc(docRef);
+    setRecipe(docSnap.data());
+    setCookingSteps(docSnap.data().cooking_steps);
+    setIngredients(docSnap.data().recipe_ingredients);
   }
 
   useEffect(() => {
     getRecipes();
+    // getWishlist();
   }, []);
   useEffect(() => {
     handleCssEvent();
     handleCssCutWord();
-    console.log(uid);
-    console.log("something");
   });
 
   return (
@@ -85,6 +97,9 @@ const RecipePage = () => {
       <ClientHeader />
       <div className="recipe__page">
         <div className="breadcrumb__menu__container">
+          <div className="back__icon__container">
+            <Back />
+          </div>
           <div className="breadcrumb__menu">
             <span>
               <Link to={`/recipes-app/home`}>Home</Link>
@@ -147,7 +162,7 @@ const RecipePage = () => {
                       </div>
                     </div>
                     <div className="recipe__add__to__wishlist">
-                      <button onClick={addToWishlist}>
+                      <button onClick={() => addToWishlist(recipe.recipe_url)}>
                         Add to wishlist button
                       </button>
                     </div>

@@ -1,25 +1,42 @@
 .navigation {
   width: 100%;
   padding: 10px 200px;
-  background: rgba(200, 200, 200, 0.5);
+  background: rgba(255, 255, 255, 0.9);
   color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 70px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000; }
-  .navigation .logo__container {
-    font-size: 20px;
-    font-weight: bold; }
-    .navigation .logo__container a {
-      color: #ffffff; }
+  z-index: 1000;
+}
+
+.navigation .logo__container {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navigation .logo__container img {
+  width: 70px;
+  margin: 5px 0;
+}
 
 @media screen and (max-width: 1040px) {
   .navigation {
-    padding: 10px 50px; } }
+    padding: 10px 50px;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .navigation {
-    padding: 10px; } }
+    padding: 10px;
+  }
+}
+/*# sourceMappingURL=ClientHeader.css.map */

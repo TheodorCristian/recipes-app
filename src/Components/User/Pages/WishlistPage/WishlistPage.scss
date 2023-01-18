@@ -1,9 +1,28 @@
-// .wishlist__recipe__teaser__container {
-//   width: 50%;
-//   margin: 150px auto;
-//   padding: 30px;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-// }
+.wishlist__page__container {
+  margin: 150px auto;
+  width: 100%;
+  max-width: 600px;
+  background: none;
+  h3 {
+    text-align: center;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+    padding: 50px;
+  }
+  .wishlist__page__content {
+    border-radius: 30px;
+    box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
+  }
+  .wishlist__page__content > p {
+    padding: 50px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 600;
+    margin: 0;
+  }
+  .wishlist__page__content:last-child {
+   border: none;
+  }
+}

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAC;EACV,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,aAAa;EAC9B,MAAM,EAAE,eAAe;EACvB,UAAU,EAAE,IAAI;CACjB",
+    "sources": [
+        "RecipeRow.scss"
+    ],
+    "names": [],
+    "file": "RecipeRow.css"
+}

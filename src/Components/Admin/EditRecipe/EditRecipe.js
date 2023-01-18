@@ -21,9 +21,8 @@ const EditRecipe = () => {
       const docRef = doc(db, "recipes", id);
       const docSnap = await getDoc(docRef);
       await setRecipe(docSnap.data());
-      console.log(docSnap.data());
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
     }
   }
 

@@ -1,45 +1,57 @@
-import React, { useContext, useState, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
 import { auth } from "../firebaseAuthConfig";
+import { getAccount } from "../Utils/utils";
+import { SignalCellularNoSimOutlined } from "@material-ui/icons";
 
-const AuthContext = React.createContext();
+const UserContext = createContext();
 
-export function useAuth() {
-  return useContext(AuthContext);
-}
+export const UserAuth = () => {
+  return useContext(UserContext);
+};
 
-export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState();
-  const [loading, setLoading] = useState(true);
+export const AuthContextProvider = ({ children }) => {
+  const [user, setUser] = useState({});
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  const value = {
-    currentUser,
-    login,
-    signup,
-    logout,
+  const signup = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
   };
-  function signup(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
-  }
 
-  function login(email, password) {
-    return auth.signInWithEmailAndPassword(email, password);
-  }
+  const login = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-  function logout() {
-    sessionStorage.setItem("currentUser", "");
-    return auth.signOut();
-  }
+  const logout = () => {
+    return signOut(auth);
+  };
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setLoading(false);
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      await setUser(currentUser);
+
     });
-    return unsubscribe;
+
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
-  return (
-    <AuthContext.Provider value={value}>
-      {!loading && children}
-    </AuthContext.Provider>
-  );
-}
+  const value = {
+    signup,
+    login,
+    logout,
+    user,
+    isAdmin,
+    setIsAdmin,
+    setUser,
+  };
+
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
+};

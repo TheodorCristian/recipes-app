@@ -1,0 +1,179 @@
+.account__page {
+  display: relative;
+}
+
+.account__page .account__delete__popup {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: hidden;
+  background: rgba(200, 200, 200, 0.9);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: 1001;
+}
+
+.account__page .account__delete__popup .account__delete__popup__container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 450px;
+  border: 1px solid #bebebe;
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.account__page .account__delete__popup .account__delete__popup__container h3 {
+  font-weight: 600;
+}
+
+.account__page .account__delete__popup .account__delete__popup__container p {
+  font-weight: 500;
+}
+
+.account__page .account__delete__popup .account__delete__popup__container .account__popup__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.account__page .account__container {
+  width: 90%;
+  max-width: 600px;
+  margin: 150px auto 50px;
+  border-radius: 50px;
+  background: #e0e0e0;
+  -webkit-box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
+          box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
+  padding: 50px;
+  position: relative;
+}
+
+.account__page .account__container .account__logout__button {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  display: block;
+  width: 30px;
+  -webkit-transition: .5s;
+  transition: .5s;
+  cursor: pointer;
+}
+
+.account__page .account__container .account__logout__button img {
+  width: 100%;
+  height: auto;
+}
+
+.account__page .account__container .account__logout__button:hover {
+  width: 32px;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.account__page .account__container .account__avatar {
+  width: 200px;
+  height: 200px;
+  background: #000;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.account__page .account__container h3 {
+  font-size: 25px;
+  line-height: 30px;
+  font-weight: 700;
+  text-align: center;
+  margin: 30px;
+  text-transform: uppercase;
+}
+
+.account__page .account__container .account__details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 0 50px;
+}
+
+.account__page .account__container .account__details .account__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.account__page .account__container .account__details .account__row label {
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.account__page .account__container .account__details .account__row input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background: #fff;
+}
+
+.account__page .account__container .account__details .account__button__actions {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.account__page .account__container .account__details .account__button__actions button {
+  margin: 0 20px;
+}
+/*# sourceMappingURL=UserProfile.css.map */

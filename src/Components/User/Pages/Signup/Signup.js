@@ -6,7 +6,7 @@ import { Card, Button, Container, Form, Alert } from "react-bootstrap";
 import "./Signup.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../../../Contexts/AuthContext";
+import { UserAuth } from "../../../../Contexts/AuthContext";
 
 const Signup = () => {
   const emailRef = useRef();
@@ -15,7 +15,7 @@ const Signup = () => {
   const firstNameRef = useRef();
   const lastNameRef = useRef();
 
-  const { signup, login } = useAuth();
+  const { signup, login } = UserAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
@@ -41,15 +41,17 @@ const Signup = () => {
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
       await login(emailRef.current.value, passwordRef.current.value);
-      const auth = getAuth();
-      const user = auth.currentUser;
+      let user = await getAuth().currentUser;
+      sessionStorage.setItem("user", JSON.stringify(user));
       let data = {
         first_name: firstNameRef.current.value,
         last_name: lastNameRef.current.value,
         email: emailRef.current.value,
         isAdmin: false,
         uid: user.uid,
+        wishlist: [],
       };
+
       await addDoc(collection(db, "accounts"), data);
       navigate("/recipes-app/home");
     } catch (error) {
@@ -104,7 +106,8 @@ const Signup = () => {
           </Card>
           <div className="w-100 text-center mt-2">
             <p>
-              Already have an account? <Link to="/login">Log In</Link>
+              Already have an account?{" "}
+              <Link to="/recipes-app/login">Log In</Link>
             </p>
           </div>
         </div>

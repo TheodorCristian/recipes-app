@@ -1,0 +1,49 @@
+.add__recipe__container {
+  background: #ddd;
+  width: 100%;
+  max-width: 720px;
+  margin: 50px auto;
+  padding: 50px;
+}
+
+.form__field {
+  margin-top: 50px;
+}
+
+.form__field .form__label {
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+.form__field .form__input {
+  width: 100%;
+  min-height: 30px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #e8e8e8;
+  padding: 10px;
+  background-color: #fff;
+}
+
+.form__field .add__ingredient, .form__field .add__image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.form__field .add__ingredient input, .form__field .add__image input {
+  margin-right: 10px;
+}
+
+.form__field .add__ingredient img, .form__field .add__image img {
+  width: 30px;
+  height: auto;
+}
+/*# sourceMappingURL=AddRecipe.css.map */

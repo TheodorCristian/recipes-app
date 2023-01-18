@@ -1,9 +1,136 @@
-.account__container {
-   width: 90%;
-   max-width: 1000px;
-   margin: 0 auto;
-   .account__avatar {
-      width: 100px;
-      height: 100px;
-   }
+.account__page {
+  display: relative;
+  .account__delete__popup {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background: rgba(200, 200, 200, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    .account__delete__popup__container {
+      width: 90%;
+      margin: 0 auto;
+      max-width: 450px;
+      border: 1px solid #bebebe;
+      background-color: #fff;
+      padding: 50px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      h3 {
+        font-weight: 600;
+      }
+      p {
+        font-weight: 500;
+      }
+      .account__popup__buttons {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin: 10px 0;
+        width: 100%;
+        button {
+          transition: .3s;
+        }
+        button:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+  .account__container {
+    width: 90%;
+    max-width: 600px;
+    margin: 150px auto 0px;
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
+    padding: 50px;
+    position: relative;
+    .account__logout__button,
+    .account__wishlist__button {
+      position: absolute;
+      display: block;
+      width: 30px;
+      transition: 0.3s;
+      top: 50px;
+      cursor: pointer;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .account__logout__button {
+      left: 50px;
+    }
+    .account__wishlist__button {
+      right: 50px;
+    }
+    .account__logout__button:hover,
+    .account__wishlist__button:hover {
+      transform: scale(1.2);
+    }
+    .account__avatar {
+      width: 200px;
+      height: 200px;
+      background: #000;
+      border-radius: 50%;
+      margin: 0 auto;
+    }
+    h3 {
+      font-size: 25px;
+      line-height: 30px;
+      font-weight: 700;
+      text-align: center;
+      margin: 30px;
+      text-transform: uppercase;
+    }
+    .account__details {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0 50px;
+      .account__row {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 30px;
+        width: 100%;
+        label {
+          font-size: 18px;
+          line-height: 25px;
+          font-weight: 600;
+          margin-bottom: 10px;
+        }
+        input {
+          width: 100%;
+          padding: 15px;
+          border-radius: 10px;
+          outline: none;
+          border: none;
+          background: #fff;
+        }
+      }
+      .account__button__actions {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        button {
+          margin: 0 20px;
+          transition: .3s;
+        }
+        button:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
 }

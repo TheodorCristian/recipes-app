@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,cAAc,CAAC;EACb,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,MAAM;EACvB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,cAAc;EACtB,aAAa,EAAE,GAAG;EAClB,UAAU,EAAE,IAAI;CAKjB;;AAZD,AAQE,cARY,CAQZ,GAAG,CAAC;EACF,OAAO,EAAE,GAAG;EACZ,KAAK,EAAE,IAAI;CACZ;;AAEH,AAAA,cAAc,AAAA,MAAM,CAAC;EACnB,SAAS,EAAE,UAAU;CACtB",
+    "sources": [
+        "ProfileNavbarIcon.scss"
+    ],
+    "names": [],
+    "file": "ProfileNavbarIcon.css"
+}

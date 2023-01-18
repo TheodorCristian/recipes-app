@@ -1,8 +1,6 @@
 import React from "react";
 import "./RecipeTeaser.scss";
 import { Link } from "react-router-dom";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
-import { db } from "../../../firebaseAuthConfig";
 import TimeStat from "../../../Assets/images/hourglass.png";
 import DifficultyStat from "../../../Assets/images/speedometer.png";
 import CaloriesStat from "../../../Assets/images/calories.png";
@@ -17,9 +15,6 @@ const RecipeTeaser = ({
   difficulty,
   calories,
 }) => {
-  // const handleClick = () => {
-  //   db.collection("wishlist").add({ wishlist_recipe_name: name });
-  // };
   return (
     <div className="recipe__teaser">
       <div className="recipe__teaser__image">
@@ -52,11 +47,6 @@ const RecipeTeaser = ({
           <p>{calories}</p>
         </div>
       </div>
-      {/* <div className="recipe__teaser__addToWishList">
-        <p onClick={handleClick}>
-          <span>{<AddCircleIcon />}</span>Add to Wishlist
-        </p>
-      </div> */}
     </div>
   );
 };
