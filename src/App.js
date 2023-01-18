@@ -22,7 +22,7 @@ import ProtectedRoute from "./Utils/ProtectedRoute";
 import WishlistPage from "./Components/User/Pages/WishlistPage/WishlistPage";
 
 const App = () => {
-  let user = sessionStorage.getItem("user");
+  let user = JSON.parse(sessionStorage.getItem("user"));
   let isAdmin = sessionStorage.getItem("isAdmin");
 
   return (
