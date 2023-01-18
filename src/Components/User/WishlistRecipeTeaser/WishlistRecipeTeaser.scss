@@ -65,11 +65,17 @@
     }
   }
   .wishlist__remove {
-    width: 35px;
+    width: 45px;
+    transition: 0.3s;
+    cursor: pointer;
     img {
       width: 100%;
       height: auto;
     }
+    
+  }
+  .wishlist__remove:hover {
+    transform: scale(1.2);
   }
 }
 .border__bottom__none {

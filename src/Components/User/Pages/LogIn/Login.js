@@ -32,9 +32,9 @@ const Login = () => {
       let systemUser = await getAuth().currentUser;
       let accountRez = await getAccount(systemUser.uid);
       sessionStorage.setItem("systemUserId", systemUser.uid);
-      sessionStorage.setItem("user",  JSON.stringify(accountRez));
-      sessionStorage.setItem("isAdmin", accountRez.isAdmin);
-      accountRez.isAdmin
+      sessionStorage.setItem("user", JSON.stringify(accountRez));
+      sessionStorage.setItem("isAdmin", accountRez.data.isAdmin);
+      accountRez.data.isAdmin
         ? navigate("/recipes-app/dashboard")
         : navigate("/recipes-app/home");
     } catch (error) {
