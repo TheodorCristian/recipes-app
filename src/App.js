@@ -18,7 +18,8 @@ import AddIngredient from "./Components/Admin/AddIngredient/AddIngredient";
 import EditRecipe from "./Components/Admin/EditRecipe/EditRecipe";
 import EditCategory from "./Components/Admin/EditCategory/EditCategory";
 import EditIngredient from "./Components/Admin/EditIngredient/EditIngredient";
-import ProtectedRoute from "./Utils/ProtectedRoute";
+import ProtectedAdminRoutes from "./Utils/ProtectedAdminRoutes";
+import ProtectedUserRoutes from "./Utils/ProtectedUserRoutes";
 import WishlistPage from "./Components/User/Pages/WishlistPage/WishlistPage";
 
 const App = () => {
@@ -35,70 +36,49 @@ const App = () => {
           <Route
             path="/recipes-app/home"
             element={
-              <ProtectedRoute
-                isAllowed={!!JSON.parse(sessionStorage.getItem("user"))}
-                redirectPath="/recipes-app/login"
-              >
+              <ProtectedUserRoutes redirectPath="/recipes-app/login">
                 <Home />
-              </ProtectedRoute>
+              </ProtectedUserRoutes>
             }
           />
           <Route
             path="/recipes-app/recipes/:id"
             element={
-              <ProtectedRoute
-                isAllowed={!!JSON.parse(sessionStorage.getItem("user"))}
-                redirectPath="/recipes-app/login"
-              >
+              <ProtectedUserRoutes redirectPath="/recipes-app/login">
                 <CategoryPage />
-              </ProtectedRoute>
+              </ProtectedUserRoutes>
             }
           />
           <Route
             path="/recipes-app/recipes/:cat/:id"
             element={
-              <ProtectedRoute
-                isAllowed={!!JSON.parse(sessionStorage.getItem("user"))}
-                redirectPath="/recipes-app/login"
-              >
+              <ProtectedUserRoutes redirectPath="/recipes-app/login">
                 <RecipePage />
-              </ProtectedRoute>
+              </ProtectedUserRoutes>
             }
           />
           <Route
             path="/recipes-app/profile"
             element={
-              <ProtectedRoute
-                isAllowed={!!JSON.parse(sessionStorage.getItem("user"))}
-                redirectPath="/recipes-app/login"
-              >
+              <ProtectedUserRoutes redirectPath="/recipes-app/login">
                 <UserProfile />
-              </ProtectedRoute>
+              </ProtectedUserRoutes>
             }
           />
           <Route
             path="/recipes-app/wishlist"
             element={
-              <ProtectedRoute
-                isAllowed={!!JSON.parse(sessionStorage.getItem("user"))}
-                redirectPath="/recipes-app/login"
-              >
+              <ProtectedUserRoutes redirectPath="/recipes-app/login">
                 <WishlistPage />
-              </ProtectedRoute>
+              </ProtectedUserRoutes>
             }
           />
           <Route
             path="/recipes-app/dashboard"
             element={
-              <ProtectedRoute
-                isAllowed={
-                  !!JSON.parse(sessionStorage.getItem("user")) &&
-                  sessionStorage.getItem("isAdmin")
-                }
-                redirectPath="/recipes-app/home"
-              >
+              <ProtectedAdminRoutes redirectPath="/recipes-app/home">
                 <Dashboard />
-              </ProtectedRoute>
+              </ProtectedAdminRoutes>
             }
           />
           <Route path="/recipes-app/add-recipe" element={<AddRecipe />} />
