@@ -20,10 +20,17 @@ import EditCategory from "./Components/Admin/EditCategory/EditCategory";
 import EditIngredient from "./Components/Admin/EditIngredient/EditIngredient";
 import ProtectedRoute from "./Utils/ProtectedRoute";
 import WishlistPage from "./Components/User/Pages/WishlistPage/WishlistPage";
+import { useEffect, useState } from "react";
 
 const App = () => {
-  let user = JSON.parse(sessionStorage.getItem("user"));
-  let isAdmin = sessionStorage.getItem("isAdmin");
+  const [user, setUser] = useState({});
+  const [isAdmin, setIsAdmin] = useState(Boolean);
+
+  useEffect(() => {
+    setUser(JSON.parse(sessionStorage.getItem("user")));
+    setIsAdmin(sessionStorage.getItem("isAdmin"));
+  }, [])
+
 
   return (
     <div className="App">
