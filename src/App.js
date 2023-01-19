@@ -20,18 +20,8 @@ import EditCategory from "./Components/Admin/EditCategory/EditCategory";
 import EditIngredient from "./Components/Admin/EditIngredient/EditIngredient";
 import ProtectedRoute from "./Utils/ProtectedRoute";
 import WishlistPage from "./Components/User/Pages/WishlistPage/WishlistPage";
-import { useEffect, useState } from "react";
 
 const App = () => {
-  const [user, setUser] = useState({});
-  const [isAdmin, setIsAdmin] = useState(Boolean);
-
-  useEffect(() => {
-    setUser(JSON.parse(sessionStorage.getItem("user")));
-    setIsAdmin(sessionStorage.getItem("isAdmin"));
-  }, [])
-
-
   return (
     <div className="App">
       <Router>
@@ -46,7 +36,7 @@ const App = () => {
             path="/recipes-app/home"
             element={
               <ProtectedRoute
-                isAllowed={!!user}
+                isAllowed={!!JSON.parse(sessionStorage.getItem("user"))}
                 redirectPath="/recipes-app/login"
               >
                 <Home />
@@ -57,7 +47,7 @@ const App = () => {
             path="/recipes-app/recipes/:id"
             element={
               <ProtectedRoute
-                isAllowed={!!user}
+                isAllowed={!!JSON.parse(sessionStorage.getItem("user"))}
                 redirectPath="/recipes-app/login"
               >
                 <CategoryPage />
@@ -68,7 +58,7 @@ const App = () => {
             path="/recipes-app/recipes/:cat/:id"
             element={
               <ProtectedRoute
-                isAllowed={!!user}
+                isAllowed={!!JSON.parse(sessionStorage.getItem("user"))}
                 redirectPath="/recipes-app/login"
               >
                 <RecipePage />
@@ -79,7 +69,7 @@ const App = () => {
             path="/recipes-app/profile"
             element={
               <ProtectedRoute
-                isAllowed={!!user}
+                isAllowed={!!JSON.parse(sessionStorage.getItem("user"))}
                 redirectPath="/recipes-app/login"
               >
                 <UserProfile />
@@ -90,7 +80,7 @@ const App = () => {
             path="/recipes-app/wishlist"
             element={
               <ProtectedRoute
-                isAllowed={!!user}
+                isAllowed={!!JSON.parse(sessionStorage.getItem("user"))}
                 redirectPath="/recipes-app/login"
               >
                 <WishlistPage />
@@ -101,7 +91,10 @@ const App = () => {
             path="/recipes-app/dashboard"
             element={
               <ProtectedRoute
-                isAllowed={!!user && isAdmin}
+                isAllowed={
+                  !!JSON.parse(sessionStorage.getItem("user")) &&
+                  sessionStorage.getItem("isAdmin")
+                }
                 redirectPath="/recipes-app/home"
               >
                 <Dashboard />

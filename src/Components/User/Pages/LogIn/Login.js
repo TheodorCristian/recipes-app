@@ -27,7 +27,6 @@ const Login = () => {
     try {
       setError("");
       setLoading(true);
-
       await login(emailRef.current.value, passwordRef.current.value);
       let systemUser = await getAuth().currentUser;
       let accountRez = await getAccount(systemUser.uid);
