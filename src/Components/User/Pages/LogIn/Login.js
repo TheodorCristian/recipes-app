@@ -34,8 +34,8 @@ const Login = () => {
       sessionStorage.setItem("user", JSON.stringify(accountRez));
       sessionStorage.setItem("isAdmin", accountRez.data.isAdmin);
       accountRez.data.isAdmin
-        ? navigate("/recipes-app/dashboard")
-        : navigate("/recipes-app/home");
+        ? navigate("/dashboard")
+        : navigate("/home");
     } catch (error) {
       setError("Failed to Log In" + error);
     }
@@ -75,7 +75,7 @@ const Login = () => {
           <div className="w-100 text-center mt-2">
             <p>
               Don't have a valid Account?{" "}
-              <Link to="/recipes-app/signup">Create Account</Link>
+              <Link to="/signup">Create Account</Link>
             </p>
           </div>
         </div>

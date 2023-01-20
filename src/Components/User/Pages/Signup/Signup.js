@@ -53,7 +53,7 @@ const Signup = () => {
       };
 
       await addDoc(collection(db, "accounts"), data);
-      navigate("/recipes-app/home");
+      navigate("/home");
     } catch (error) {
       setError("Failed to create an account");
       console.log(error);
@@ -107,7 +107,7 @@ const Signup = () => {
           <div className="w-100 text-center mt-2">
             <p>
               Already have an account?{" "}
-              <Link to="/recipes-app/login">Log In</Link>
+              <Link to="/login">Log In</Link>
             </p>
           </div>
         </div>

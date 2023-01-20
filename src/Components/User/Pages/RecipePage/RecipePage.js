@@ -102,11 +102,11 @@ const RecipePage = () => {
           </div>
           <div className="breadcrumb__menu">
             <span>
-              <Link to={`/recipes-app/home`}>Home</Link>
+              <Link to={`/home`}>Home</Link>
             </span>
             /
             <span>
-              <Link to={`/recipes-app/recipes/${cat}`}>{cat}</Link>
+              <Link to={`/recipes/${cat}`}>{cat}</Link>
             </span>
             / <span className="breadcrumb__active__link">{id}</span>
           </div>

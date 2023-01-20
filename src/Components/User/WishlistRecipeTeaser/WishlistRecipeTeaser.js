@@ -26,7 +26,7 @@ const WishlistRecipeTeaser = ({ action, recipeId, isLast, isFirst }) => {
     <div className="wishlist__recipe__teaser" style={{borderBottom: isLast ? '0' : '2px solid #ddd', borderTop: isFirst ? '2px solid #ddd' : '0'}}>
       <div className="wishlist__recipe__teaser__image">
         <Link
-          to={`/recipes-app/recipes/${recipe.recipe_category}/${recipe.recipe_url}`}
+          to={`/recipes/${recipe.recipe_category}/${recipe.recipe_url}`}
         >
           <img src={recipe.recipe_image} alt={recipe.recipe_name} />
         </Link>

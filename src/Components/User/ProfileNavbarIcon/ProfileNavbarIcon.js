@@ -7,7 +7,7 @@ function ProfileNavbarIcon() {
 
   return (
     <div className="profile__icon">
-      <Link to="/recipes-app/profile">
+      <Link to="/profile">
         <img src={ProfileIcon} alt="Profile Icon" />
       </Link>
     </div>

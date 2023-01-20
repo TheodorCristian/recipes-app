@@ -13,7 +13,7 @@ const CategoryTeaser = ({ name, description, thumbnail }) => {
         <p>{description}</p>
         <Link
           className="category__teaser__cta"
-          to={`/recipes-app/recipes/${name}`}
+          to={`/recipes/${name}`}
         >
           Go to <span>{name}</span>
         </Link>

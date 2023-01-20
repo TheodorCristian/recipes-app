@@ -28,7 +28,7 @@ const Dashboard = () => {
       await logout();
       await setUser({});
       await setIsAdmin(false);
-      navigate('/recipes-app/login');
+      navigate('/login');
     } catch (error) {
       console.log(error)
     }

@@ -40,7 +40,7 @@ const UserProfile = () => {
       sessionStorage.setItem("user", null);
       sessionStorage.setItem("systemUserId", null);
       sessionStorage.setItem("isAdmin", null);
-      navigate("/recipes-app/login");
+      navigate("/login");
     } catch (error) {
       console.log(error);
     }
@@ -57,7 +57,7 @@ const UserProfile = () => {
     deleteUser(systemUser)
       .then(() => {
         deleteDoc(doc(db, "accounts", accountId));
-        navigate("/recipes-app/signup");
+        navigate("/signup");
       })
       .catch((error) => {
         console.log(error);
@@ -65,7 +65,7 @@ const UserProfile = () => {
   };
 
   const wishlist = () => {
-    navigate("/recipes-app/wishlist");
+    navigate("/wishlist");
   };
 
   const displayDeletePopUp = () => {

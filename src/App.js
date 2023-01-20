@@ -27,75 +27,63 @@ const App = () => {
     <div className="App">
       <Router>
         <Routes>
+          <Route path="/" element={<Navigate replace to="/login" />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
           <Route
-            path="/recipes-app/"
-            element={<Navigate replace to="/recipes-app/login" />}
-          />
-          <Route path="/recipes-app/signup" element={<Signup />} />
-          <Route path="/recipes-app/login" element={<Login />} />
-          <Route
-            path="/recipes-app/home"
+            path="/home"
             element={
-              <ProtectedUserRoutes redirectPath="/recipes-app/login">
+              <ProtectedUserRoutes redirectPath="/login">
                 <Home />
               </ProtectedUserRoutes>
             }
           />
           <Route
-            path="/recipes-app/recipes/:id"
+            path="/recipes/:id"
             element={
-              <ProtectedUserRoutes redirectPath="/recipes-app/login">
+              <ProtectedUserRoutes redirectPath="/login">
                 <CategoryPage />
               </ProtectedUserRoutes>
             }
           />
           <Route
-            path="/recipes-app/recipes/:cat/:id"
+            path="/recipes/:cat/:id"
             element={
-              <ProtectedUserRoutes redirectPath="/recipes-app/login">
+              <ProtectedUserRoutes redirectPath="/login">
                 <RecipePage />
               </ProtectedUserRoutes>
             }
           />
           <Route
-            path="/recipes-app/profile"
+            path="/profile"
             element={
-              <ProtectedUserRoutes redirectPath="/recipes-app/login">
+              <ProtectedUserRoutes redirectPath="/login">
                 <UserProfile />
               </ProtectedUserRoutes>
             }
           />
           <Route
-            path="/recipes-app/wishlist"
+            path="/wishlist"
             element={
-              <ProtectedUserRoutes redirectPath="/recipes-app/login">
+              <ProtectedUserRoutes redirectPath="/login">
                 <WishlistPage />
               </ProtectedUserRoutes>
             }
           />
           <Route
-            path="/recipes-app/dashboard"
+            path="/dashboard"
             element={
-              <ProtectedAdminRoutes redirectPath="/recipes-app/home">
+              <ProtectedAdminRoutes redirectPath="/home">
                 <Dashboard />
               </ProtectedAdminRoutes>
             }
           />
-          <Route path="/recipes-app/add-recipe" element={<AddRecipe />} />
-          <Route path="/recipes-app/add-category" element={<AddCategory />} />
-          <Route
-            path="/recipes-app/add-ingredient"
-            element={<AddIngredient />}
-          />
-          <Route path="/recipes-app/edit-recipe/:id" element={<EditRecipe />} />
-          <Route
-            path="/recipes-app/edit-category/:id"
-            element={<EditCategory />}
-          />
-          <Route
-            path="/recipes-app/edit-ingredient/:id"
-            element={<EditIngredient />}
-          />
+          <Route path="/add-recipe" element={<AddRecipe />} />
+          <Route path="/add-category" element={<AddCategory />} />
+          <Route path="/add-ingredient" element={<AddIngredient />} />
+          <Route path="/edit-recipe/:id" element={<EditRecipe />} />
+          <Route path="/edit-category/:id" element={<EditCategory />} />
+          <Route path="/edit-ingredient/:id" element={<EditIngredient />} />
         </Routes>
       </Router>
     </div>
