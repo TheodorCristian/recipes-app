@@ -82,7 +82,7 @@
       margin-top: 10px;
       .recipe__page__tab__body__info {
         position: absolute;
-        top: -200%;
+        top: -300%;
         opacity: 0;
         margin: auto 0;
         transform: scale(0.9);
@@ -137,7 +137,7 @@
           .recipe__description__content {
             border-radius: 30px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            padding: 30px;
+            padding: 10px;
             width: 50%;
             display: flex;
             align-items: center;
@@ -176,20 +176,35 @@
                 margin-bottom: 15px;
               }
             }
-            .recipe__add__to__wishlist {
-              button {
-                padding: 5px 15px;
-                outline: none;
-                background: #00acee;
-                color: #fff;
-                font-size: 15px;
-                border-radius: 30px;
-                border: none;
-                transition: 0.2s;
-                margin-bottom: 10px;
+            .recipe__wishlist__action__container {
+              .recipe__wishlist__action__content {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 2px;
+                transition: 0.5s ease-in-out;
+                .wishlist__icon {
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  max-width: 30px;
+                  img {
+                    width: 100%;
+                    height: auto;
+                  }
+                }
+
+                p {
+                  font-size: 15px;
+                  line-height: 18px;
+                  font-weight: 600;
+                  color: #777;
+                  margin: 0 10px;
+                }
               }
-              button:hover {
-                background: #00abeeb0;
+              .recipe__wishlist__action__content:hover {
+                cursor: pointer;
+                transform: scale(1.2);
               }
             }
           }

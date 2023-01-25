@@ -10,23 +10,22 @@ import DifficultyStat from "../../../../Assets/images/speedometer.png";
 import CaloriesStat from "../../../../Assets/images/calories.png";
 import ClientHeader from "../../ClientHeader/ClientHeader";
 import { Link } from "react-router-dom";
-import {
-  getDoc,
-  doc,
-  updateDoc,
-  arrayUnion,
-} from "firebase/firestore";
+import { getDoc, doc, updateDoc, arrayUnion } from "firebase/firestore";
 import Back from "../../../General/Back/Back";
-
+import Wishlisted from "../../../../Assets/images/checked.png";
+import Add from "../../../../Assets/images/add.png";
+import "../../../../App.css";
+import { getAccount } from "../../../../Utils/utils";
 
 const RecipePage = () => {
   const [recipe, setRecipe] = useState([]);
   const [cookingSteps, setCookingSteps] = useState([]);
   const [ingredients, setIngredients] = useState([]);
+  const [wishlisted, setWishlisted] = useState(Boolean);
 
   let { cat, id } = useParams();
   let user = JSON.parse(sessionStorage.getItem("user"));
-
+  let systemUser = sessionStorage.getItem("systemUserId");
 
   const handleCssEvent = () => {
     let tabHeader = document.getElementsByClassName(
@@ -56,11 +55,12 @@ const RecipePage = () => {
 
   const addToWishlist = async (recipeId) => {
     const accountRef = doc(db, "accounts", user.accountRef);
-    console.log(accountRef);
     await updateDoc(accountRef, {
       wishlist: arrayUnion(recipeId),
     });
-    console.log("recipe added");
+    setWishlisted(true);
+    document.querySelector("#wishlisted").classList.remove("hide");
+    document.querySelector("#notWishlisted").classList.add("hide");
   };
 
   const handleCssCutWord = () => {
@@ -75,6 +75,7 @@ const RecipePage = () => {
       });
     }
   };
+
   async function getRecipes() {
     const docRef = doc(db, "recipes", id);
     const docSnap = await getDoc(docRef);
@@ -83,10 +84,32 @@ const RecipePage = () => {
     setIngredients(docSnap.data().recipe_ingredients);
   }
 
+  async function fetchAccount() {
+    let account = await getAccount(systemUser);
+    return account;
+  }
+
+  async function checkIfRecipeIsWishlisted() {
+    let wishlist;
+    await fetchAccount()
+      .then((acc) => (wishlist = acc.data.wishlist))
+      .catch((err) => console.log(err));
+    if (wishlist.indexOf(id) > -1) {
+      document.querySelector("#wishlisted").classList.remove("hide");
+      document.querySelector("#notWishlisted").classList.add("hide");
+      setWishlisted(true);
+    } else {
+      document.querySelector("#wishlisted").classList.add("hide");
+      document.querySelector("#notWishlisted").classList.remove("hide");
+      setWishlisted(false);
+    }
+  }
+
   useEffect(() => {
     getRecipes();
-    // getWishlist();
-  }, []);
+    checkIfRecipeIsWishlisted();
+  }, [setWishlisted]);
+
   useEffect(() => {
     handleCssEvent();
     handleCssCutWord();
@@ -96,10 +119,10 @@ const RecipePage = () => {
     <div>
       <ClientHeader />
       <div className="recipe__page">
+        <div className="back__icon__container">
+          <Back />
+        </div>
         <div className="breadcrumb__menu__container">
-          <div className="back__icon__container">
-            <Back />
-          </div>
           <div className="breadcrumb__menu">
             <span>
               <Link to={`/home`}>Home</Link>
@@ -161,10 +184,26 @@ const RecipePage = () => {
                         <p>{recipe.recipe_calories}</p>
                       </div>
                     </div>
-                    <div className="recipe__add__to__wishlist">
-                      <button onClick={() => addToWishlist(recipe.recipe_url)}>
-                        Add to wishlist button
-                      </button>
+                    <div className="recipe__wishlist__action__container">
+                      <div
+                        className="recipe__wishlist__action__content"
+                        id="wishlisted"
+                      >
+                        <div className="wishlist__icon">
+                          <img src={Wishlisted} alt="Wishlisted" />
+                        </div>
+                        <p>Wishlisted</p>
+                      </div>
+                      <div
+                        className="recipe__wishlist__action__content"
+                        id="notWishlisted"
+                        onClick={() => addToWishlist(id)}
+                      >
+                        <div className="wishlist__icon">
+                          <img src={Add} alt="Remove" />
+                        </div>
+                        <p>Add</p>
+                      </div>
                     </div>
                   </div>
                 </div>

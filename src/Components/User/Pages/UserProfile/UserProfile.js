@@ -49,7 +49,7 @@ const UserProfile = () => {
   const deleteAccount = async () => {
     let accountId;
     const accountRef = collection(db, "accounts");
-    const q = query(accountRef, where("uid", "==", user.uid));
+    const q = query(accountRef, where("uid", "==", user.data.uid));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       accountId = doc.id;

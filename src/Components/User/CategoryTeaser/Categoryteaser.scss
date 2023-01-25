@@ -51,14 +51,19 @@
       position: relative;
       display: inline-block;
       padding: 10px 20px;
-      background: #888;
-      color: #fff;
+      background: #c5d6c4;
+      color: #555;
+      font-weight: 700;
       border-radius: 20px;
       text-decoration: none;
       margin-top: 20px;
+      transition: .3s;
       span {
         text-transform: capitalize;
       }
+    }
+    .category__teaser__cta:hover {
+      transform: scale(1.2);
     }
   }
 }

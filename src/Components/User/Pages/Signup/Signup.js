@@ -7,6 +7,7 @@ import "./Signup.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../../../Contexts/AuthContext";
+import { getAccount } from "../../../../Utils/utils";
 
 const Signup = () => {
   const emailRef = useRef();
@@ -41,18 +42,20 @@ const Signup = () => {
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
       await login(emailRef.current.value, passwordRef.current.value);
-      let user = await getAuth().currentUser;
-      sessionStorage.setItem("user", JSON.stringify(user));
+      let systemUser = await getAuth().currentUser;
       let data = {
         first_name: firstNameRef.current.value,
         last_name: lastNameRef.current.value,
         email: emailRef.current.value,
         isAdmin: false,
-        uid: user.uid,
+        uid: systemUser.uid,
         wishlist: [],
       };
-
       await addDoc(collection(db, "accounts"), data);
+      let accountRez = await getAccount(systemUser.uid);
+      sessionStorage.setItem("systemUserId", systemUser.uid);
+      sessionStorage.setItem("user", JSON.stringify(accountRez));
+      sessionStorage.setItem("isAdmin", accountRez.data.isAdmin);
       navigate("/home");
     } catch (error) {
       setError("Failed to create an account");
@@ -106,8 +109,7 @@ const Signup = () => {
           </Card>
           <div className="w-100 text-center mt-2">
             <p>
-              Already have an account?{" "}
-              <Link to="/login">Log In</Link>
+              Already have an account? <Link to="/login">Log In</Link>
             </p>
           </div>
         </div>

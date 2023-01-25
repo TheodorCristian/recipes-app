@@ -1,6 +1,7 @@
 .wishlist__page__container {
-  margin: 150px auto;
-  width: 100%;
+   width: 90%;
+  margin: 150px auto 50px;
+  
   max-width: 600px;
   background: none;
   h3 {
@@ -25,4 +26,16 @@
   .wishlist__page__content:last-child {
    border: none;
   }
+}
+
+@media screen and (max-width: 720px) {
+   .wishlist__page__container{
+      h3 {
+         padding: 0 0 25px;
+      }
+      .wishlist__page__content {
+
+      }
+   }
+   
 }

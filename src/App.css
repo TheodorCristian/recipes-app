@@ -51,6 +51,7 @@ li {
 
 .hide {
   display: none;
+  transition: .5s ease-in-out;
 }
 
 .hide__scrollbar {

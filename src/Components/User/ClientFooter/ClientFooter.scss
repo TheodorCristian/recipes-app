@@ -1,0 +1,29 @@
+.footer__container {
+  background: #1b1e29;
+  color: #f6f6f6;
+  display: flex;
+  justify-content: end;
+  padding: 200px 100px 100px;
+  .credits {
+    p {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0;
+      span {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .footer__container {
+    padding: 100px 50px 50px;
+    flex-direction: column;
+    align-items: end;
+    .credits {
+      text-align: right;
+      padding-top: 30px;
+    }
+  }
+}

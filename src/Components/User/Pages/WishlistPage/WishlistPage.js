@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../../../firebaseAuthConfig";
-import {
-  doc,
-  getDoc,
-  arrayRemove,
-  updateDoc,
-} from "firebase/firestore";
+import { doc, getDoc, arrayRemove, updateDoc } from "firebase/firestore";
 import WishlistRecipeTeaser from "../../WishlistRecipeTeaser/WishlistRecipeTeaser";
 import ClientHeader from "../../ClientHeader/ClientHeader";
 import "./WishlistPage.scss";
+import Back from "../../../General/Back/Back";
 
 const WishlistPage = () => {
   const [wishlist, setWishlist] = useState([]);
@@ -30,12 +26,17 @@ const WishlistPage = () => {
     });
     getWishlist();
   };
-   
-   if (wishlist.length > 0) {
-      paragraph = <p>What are you waiting for? <br/>Go and cook your favourite recipes! </p>;
-   } else {
-      paragraph = <p>You don't have wishlisted recipes... </p>
-   }
+
+  if (wishlist.length > 0) {
+    paragraph = (
+      <p>
+        What are you waiting for? <br />
+        Go and cook your favourite recipes!
+      </p>
+    );
+  } else {
+    paragraph = <p>You don't have wishlisted recipes... </p>;
+  }
 
   useEffect(() => {
     getWishlist();
@@ -44,20 +45,25 @@ const WishlistPage = () => {
   return (
     <>
       <ClientHeader />
+      <div className="back__icon__container">
+        <Back />
+      </div>
       <div className="wishlist__page__container">
-      <h3>Your Wishlist</h3>
-         <div className="wishlist__page__content">
-         {paragraph}
+        <h3>Your Wishlist</h3>
+        <div className="wishlist__page__content">
+          {paragraph}
           {wishlist.map((recipe, index) => {
-            index === wishlist.length - 1 ? lastTeaser = true : lastTeaser = false;
-            index === 0 ? firstTeaser = true : firstTeaser = false;
+            index === wishlist.length - 1
+              ? (lastTeaser = true)
+              : (lastTeaser = false);
+            index === 0 ? (firstTeaser = true) : (firstTeaser = false);
             return (
               <WishlistRecipeTeaser
                 action={() => handleDelete(recipe)}
                 recipeId={recipe}
                 key={recipe}
-                isLast = {lastTeaser}
-                isFirst = {firstTeaser}
+                isLast={lastTeaser}
+                isFirst={firstTeaser}
               />
             );
           })}

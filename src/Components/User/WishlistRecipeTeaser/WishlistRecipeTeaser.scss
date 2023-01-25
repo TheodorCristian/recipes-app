@@ -9,7 +9,7 @@
   .wishlist__recipe__teaser__image {
     width: 100px;
     height: 100px;
-    border-radius: 50%;
+    border-radius: 35px;
     overflow: hidden;
     img {
       width: 100%;
@@ -72,7 +72,6 @@
       width: 100%;
       height: auto;
     }
-    
   }
   .wishlist__remove:hover {
     transform: scale(1.2);
@@ -80,4 +79,17 @@
 }
 .border__bottom__none {
   border-bottom: 0;
+}
+
+@media screen and (max-width: 720px) {
+  .wishlist__recipe__teaser {
+    padding: 10px;
+    .wishlist__recipe__teaser__details {
+      flex-direction: column;
+      padding: 0 10px;
+      .wishlist__recipe__teaser__details__left {
+        align-items: center;
+      }
+    }
+  }
 }

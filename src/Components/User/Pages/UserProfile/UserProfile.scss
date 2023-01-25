@@ -37,7 +37,7 @@
         margin: 10px 0;
         width: 100%;
         button {
-          transition: .3s;
+          transition: 0.3s;
         }
         button:hover {
           transform: scale(1.2);
@@ -48,7 +48,7 @@
   .account__container {
     width: 90%;
     max-width: 600px;
-    margin: 150px auto 0px;
+    margin: 150px auto 50px;
     border-radius: 50px;
     background: #e0e0e0;
     box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
@@ -125,10 +125,54 @@
         justify-content: center;
         button {
           margin: 0 20px;
-          transition: .3s;
+          transition: 0.3s;
         }
         button:hover {
           transform: scale(1.2);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .account__page {
+    .account__container {
+      padding: 20px;
+      .account__logout__button {
+        left: 25px;
+      }
+      .account__wishlist__button {
+        right: 25px;
+      }
+      .account__logout__button,
+      .account__wishlist__button {
+        top: 25px;
+      }
+      .account__avatar {
+        width: 150px;
+        height: 150px;
+      }
+      h3 {
+        font-size: 20px;
+        line-height: 25px;
+      }
+      .account__details {
+        padding: 0 5px;
+        .account__row {
+          label {
+            font-size: 16px;
+            line-height: 20px;
+          }
+          input {
+            padding: 10px;
+          }
+        }
+        .account__button__actions {
+          flex-direction: column;
+          button {
+            margin: 5px 10px;
+          }
         }
       }
     }
