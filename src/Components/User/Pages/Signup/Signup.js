@@ -1,13 +1,17 @@
-import React, { useRef, useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
+import React, { useEffect, useRef, useState } from "react";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { db } from "../../../../firebaseAuthConfig";
-import { Card, Button, Container, Form, Alert } from "react-bootstrap";
+import { Form, Alert, Carousel } from "react-bootstrap";
 import "./Signup.scss";
+import "../../../../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../../../Contexts/AuthContext";
 import { getAccount } from "../../../../Utils/utils";
+import Edit from "../../../../Assets/images/edit.png";
+import DefaultAvatar from "../../../../Assets/images/default.png";
+import PageBackground from "../../../../Assets/images/white-background.png";
 
 const Signup = () => {
   const emailRef = useRef();
@@ -19,9 +23,49 @@ const Signup = () => {
   const { signup, login } = UserAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [avatars, setAvatars] = useState([]);
+  const [selectedAvatar, setSelectedAvatar] = useState(`${DefaultAvatar}`);
+  const [style, setStyle] = useState({});
+
   let navigate = useNavigate();
 
-  async function handleSubmit(e) {
+  const setBackground = () => {
+    let style = {
+      backgroundImage: `url(${PageBackground})`,
+      backgroundAttachment: "fixed",
+      backgroundSize: "cover",
+      width: "100%",
+      backgroundPosition: "center",
+    };
+
+    setStyle(style);
+  };
+  const getAvatars = async () => {
+    const docRef = await getDocs(collection(db, "avatars"));
+    docRef.forEach((doc) => {
+      setAvatars((current) => [...current, doc.data()]);
+    });
+  };
+
+  const closePopup = () => {
+    document.querySelector(".avatars__popup__container").classList.add("hide");
+    document.querySelector("body").classList.remove("hide__scrollbar");
+  };
+
+  const chooseAvatar = () => {
+    document
+      .querySelector(".avatars__popup__container")
+      .classList.remove("hide");
+    document.querySelector("body").classList.add("hide__scrollbar");
+  };
+
+  const handleSelectAvatar = (image) => {
+    setSelectedAvatar(image);
+    document.querySelector(".avatars__popup__container").classList.add("hide");
+    document.querySelector("body").classList.remove("hide__scrollbar");
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
@@ -50,6 +94,7 @@ const Signup = () => {
         isAdmin: false,
         uid: systemUser.uid,
         wishlist: [],
+        avatar: selectedAvatar,
       };
       await addDoc(collection(db, "accounts"), data);
       let accountRez = await getAccount(systemUser.uid);
@@ -57,64 +102,100 @@ const Signup = () => {
       sessionStorage.setItem("user", JSON.stringify(accountRez));
       sessionStorage.setItem("isAdmin", accountRez.data.isAdmin);
       navigate("/home");
+      console.log(data);
     } catch (error) {
       setError("Failed to create an account");
       console.log(error);
     }
     setLoading(false);
-  }
+  };
+
+  useEffect(() => {
+    setBackground();
+  }, []);
+  useEffect(() => {
+    getAvatars();
+  }, [setAvatars]);
 
   return (
-    <>
-      <Container
-        className="w-100 sign-up-container"
-        style={{ minHeight: "100vh" }}
-      >
-        <div className="w-100 mb-4 d-flex align-items-center justify-content-center card-container">
-          <Card>
-            <Card.Body>
-              <h2 className="text-center ">Sign Up</h2>
-              {error && <Alert variant="danger">{error}</Alert>}
+    <div className="signup__container" style={style}>
+      <h2 className="header">Create new account</h2>
+      {error && <Alert variant="danger">{error}</Alert>}
 
-              <Form onSubmit={handleSubmit}>
-                <Form.Group id="firstName">
-                  <Form.Label>First Name</Form.Label>
-                  <Form.Control type="text" ref={firstNameRef} required />
-                </Form.Group>
-                <Form.Group id="lastName">
-                  <Form.Label>Last Name</Form.Label>
-                  <Form.Control type="text" ref={lastNameRef} required />
-                </Form.Group>
-                <Form.Group id="email">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control type="email" ref={emailRef} required />
-                </Form.Group>
-                <Form.Group id="password">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" ref={passwordRef} required />
-                </Form.Group>
-                <Form.Group id="password-confirm">
-                  <Form.Label>Confirm Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    ref={confirmPasswordRef}
-                    required
-                  />
-                </Form.Group>
-                <Button disabled={loading} type="submit">
-                  Create Account
-                </Button>
-              </Form>
-            </Card.Body>
-          </Card>
-          <div className="w-100 text-center mt-2">
-            <p>
-              Already have an account? <Link to="/login">Log In</Link>
-            </p>
+      <div className="signup__content">
+        {selectedAvatar && (
+          <div className="avatar__section">
+            <div className="avatar">
+              <img src={selectedAvatar} alt="avatar" />
+            </div>
+            <div className="avatar__edit__icon" onClick={chooseAvatar}>
+              <img src={Edit} alt="Edit Avatar" />
+            </div>
+          </div>
+        )}
+        <Form onSubmit={handleSubmit}>
+          <div className="input__row">
+            <label htmlFor="firstName">First Name</label>
+            <input type="text" id="firstName" ref={firstNameRef} required />
+          </div>
+          <div className="input__row">
+            <label htmlFor="lastName">Last Name</label>
+            <input type="text" id="lastName" ref={lastNameRef} required />
+          </div>
+          <div className="input__row">
+            <label htmlFor="email">Email</label>
+            <input type="email" id="email" ref={emailRef} required />
+          </div>
+          <div className="input__row">
+            <label htmlFor="password">Password</label>
+            <input type="password" id="password" ref={passwordRef} required />
+          </div>
+          <div className="input__row">
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              ref={confirmPasswordRef}
+              required
+            />
+          </div>
+          <div className="signup__buttons__action">
+            <button className="action__create" disabled={loading} type="submit">
+              Create Account
+            </button>
+          </div>
+        </Form>
+        <p className="existing__account">
+          Already have an account? <Link to="/login">Log&nbsp;In</Link>
+        </p>
+      </div>
+      <div className="avatars__popup__container hide">
+        <div className="avatars__content">
+          <h3>Choose your avatar</h3>
+          <div className="avatars__carousel">
+            <Carousel fade interval={null}>
+              {avatars.map((item, index) => {
+                return (
+                  <Carousel.Item key={index}>
+                    <img
+                      className="d-block w-100"
+                      src={item.image}
+                      alt="Avatar"
+                    />
+                    <div className="avatars__popup__action__buttons">
+                      <button className="action__create" onClick={() => handleSelectAvatar(item.image)}>
+                        Choose current
+                      </button>
+                      <button className="action__cancel" onClick={closePopup}>Cancel</button>
+                    </div>
+                  </Carousel.Item>
+                );
+              })}
+            </Carousel>
           </div>
         </div>
-      </Container>
-    </>
+      </div>
+    </div>
   );
 };
 

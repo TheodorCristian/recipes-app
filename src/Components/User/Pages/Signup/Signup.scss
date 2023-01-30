@@ -1,41 +1,147 @@
-.fade {
-    opacity: 1 !important;
-}
-
-.sign-up-container {
+.signup__container {
+  margin: 0 auto;
+  padding: 50px 0;
+  .existing__account {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 20px;
+    a {
+      font-size: 17px;
+      font-weight: 700;
+    }
+  }
+  .signup__content {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    .card-container {
-        width: 100%;
-        max-width: 500px;
-        padding: 20px;
-        box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.6);
-        -webkit-box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.6);
-        -moz-box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.6);
-        border-radius: 10px;
-    }
-
-    .card {
-        margin: 20px 0;
-
-        form {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            width: 100%;
-
-            button {
-                margin: 0 auto;
-                width: 100%;
-            }
-
-            .form-group {
-                width: 100%;
-            }
-
+    flex-direction: column;
+    padding: 50px 0;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
+    padding: 50px;
+    position: relative;
+    .avatar__section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 30px 0;
+      position: relative;
+      .avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        img {
+          width: 100%;
         }
+      }
+      .avatar__edit__icon {
+        position: absolute;
+        z-index: 10;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.5);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        border-radius: 50%;
+
+        img {
+          width: 100%;
+          max-width: 30px;
+          height: auto;
+          transition: 0.3s;
+          cursor: pointer;
+        }
+        img:hover {
+          transform: scale(1.2);
+        }
+      }
     }
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      .signup__buttons__action {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        button {
+          transition: 0.3s;
+        }
+        button:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+}
+.signup__container {
+  position: relative;
+  .avatars__popup__container {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    .avatars__content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 500px;
+      background: #e0e0e0;
+      box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
+      padding: 50px;
+      border-radius: 50px;
+      h3 {
+        font-size: 25px;
+        line-height: 30px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 30px 0;
+        text-align: center;
+      }
+      .avatars__carousel {
+        width: 100%;
+        text-align: center;
+        img {
+            border-radius: 50%;
+        }
+        .avatars__popup__action__buttons {
+          margin: 50px auto;
+          button {
+            margin: 0 10px;
+            transition: .3s;
+          }
+          button:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .signup__container {
+    background: none !important;
+    .signup__content {
+      width: 90%;
+      padding: 20px;
+    }
+  }
 }

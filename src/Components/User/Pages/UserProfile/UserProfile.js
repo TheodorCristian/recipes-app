@@ -12,17 +12,18 @@ import {
 import { getAuth, deleteUser } from "firebase/auth";
 import { db } from "../../../../firebaseAuthConfig";
 import "./UserProfile.scss";
+import "../../../../App.css";
 import ClientHeader from "../../ClientHeader/ClientHeader";
 import LogOut from "../../../../Assets/images/log-out.png";
 import Wishlist from "../../../../Assets/images/wishlist.png";
 import { UserAuth } from "../../../../Contexts/AuthContext";
-import { getAccount } from "../../../../Utils/utils";
 import Back from "../../../General/Back/Back";
 
 const UserProfile = () => {
   let [firstName, setFirstName] = useState("");
   let [lastName, setLastName] = useState("");
   let [email, setEmail] = useState("");
+  let [avatar, setAvatar] = useState("");
   const navigate = useNavigate();
   const { logout } = UserAuth();
   let user = JSON.parse(sessionStorage.getItem("user"));
@@ -32,6 +33,7 @@ const UserProfile = () => {
     await setFirstName(user.data.first_name);
     await setLastName(user.data.last_name);
     await setEmail(user.data.email);
+    await setAvatar(user.data.avatar);
   };
 
   const logOut = async () => {
@@ -106,18 +108,22 @@ const UserProfile = () => {
         <div className="account__wishlist__button" onClick={wishlist}>
           <img src={Wishlist} alt="Wishlist image" />
         </div>
-        <div className="account__avatar"></div>
+        {avatar !== "" && (
+          <div className="account__avatar">
+            <img src={avatar} alt="Avatar" />
+          </div>
+        )}
         <h3>account details</h3>
         <div className="account__details">
-          <div className="account__row">
+          <div className="input__row">
             <label htmlFor="firstName">First name</label>
             <input type="text" id="firstName" value={firstName} disabled />
           </div>
-          <div className="account__row">
+          <div className="input__row">
             <label htmlFor="firstName">Last name</label>
             <input type="text" id="lastName" value={lastName} disabled />
           </div>
-          <div className="account__row">
+          <div className="input__row">
             <label htmlFor="firstName">Email</label>
             <input type="text" id="email" value={email} disabled />
           </div>

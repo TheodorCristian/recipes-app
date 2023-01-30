@@ -37,7 +37,7 @@ const Home = () => {
       });
   }
 
-  function setBackground() {
+  const setBackground = () => {
     let style = {};
     let bgs = [
       HomeOne,
@@ -92,14 +92,14 @@ const Home = () => {
           <div className="home__categories__container">
             <h3>Check Out our categories</h3>
             <ul className="category__teaser__container">
-              {categories.map((item, index) => {
+              {categories.map((item) => {
                 return (
                   <CategoryTeaser
                     className="category__teaser__card"
                     name={item.category_name}
                     description={item.category_description}
                     thumbnail={item.category_thumbnail}
-                    key={index}
+                    key={item.category_name}
                   />
                 );
               })}

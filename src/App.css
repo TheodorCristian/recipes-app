@@ -17,6 +17,27 @@ li {
   padding: 0;
 }
 
+.header {
+  font-size: 32px;
+  text-transform: uppercase;
+  line-height: 35px;
+  font-weight: 700;
+  margin: 50px auto;
+  text-align: center;
+  position: relative;
+}
+
+.header::before {
+  position: absolute;
+  display: block;
+  width: 10%;
+  height: 2px;
+  background: #999;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  content: "";
+}
 .action__delete {
   background: #ff0032;
   border-radius: 15px;
@@ -49,11 +70,60 @@ li {
   min-width: 150px;
 }
 
+.action__create {
+  background: #97cf8a;
+  border-radius: 15px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  border: 1px solid #eee;
+  min-width: 150px;
+}
+
 .hide {
   display: none;
-  transition: .5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .hide__scrollbar {
   overflow: hidden;
+}
+
+.input__row {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 30px;
+  width: 100%;
+}
+.input__row label {
+  font-size: 18px;
+  line-height: 25px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.input__row input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background: #fff;
+}
+
+@media screen and (max-width: 720px) {
+  .header {
+    font-size: 25px;
+    line-height: 37px;
+    margin: 50px auto;
+  }
+
+  .input__row label {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .input__row input {
+    padding: 10px;
+  }
 }
