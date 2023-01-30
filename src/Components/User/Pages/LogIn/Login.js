@@ -1,17 +1,13 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  useLayoutEffect,
-  useContext,
-} from "react";
-import { Card, Button, Container, Form, Alert } from "react-bootstrap";
+import React, { useState, useRef, useEffect } from "react";
+import { Form, Alert } from "react-bootstrap";
 import "./Login.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../../../../App.css";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../../../Contexts/AuthContext";
 import { getAccount } from "../../../../Utils/utils";
 import { getAuth } from "firebase/auth";
+import PageBackground from "../../../../Assets/images/white-background.png";
 
 const Login = () => {
   const emailRef = useRef();
@@ -19,10 +15,23 @@ const Login = () => {
   const { login } = UserAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [style, setStyle] = useState({});
 
   let navigate = useNavigate();
 
-  async function handleSubmit(e) {
+  const setBackground = () => {
+    let style = {
+      backgroundImage: `url(${PageBackground})`,
+      backgroundAttachment: "fixed",
+      backgroundSize: "cover",
+      width: "100%",
+      backgroundPosition: "center",
+    };
+
+    setStyle(style);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setError("");
@@ -33,54 +42,51 @@ const Login = () => {
       sessionStorage.setItem("systemUserId", systemUser.uid);
       sessionStorage.setItem("user", JSON.stringify(accountRez));
       sessionStorage.setItem("isAdmin", accountRez.data.isAdmin);
-      accountRez.data.isAdmin
-        ? navigate("/dashboard")
-        : navigate("/home");
+      accountRez.data.isAdmin ? navigate("/dashboard") : navigate("/home");
     } catch (error) {
-      setError("Failed to Log In" + error);
+      setError("Password or email are incorrect.");
+      console.warn("Failed to login:" + error);
     }
     setLoading(false);
-  }
+  };
+
+  useEffect(() => {
+    setBackground();
+  }, []);
 
   return (
-    <>
-      <Container
-        className="w-100 log-in-container"
-        style={{ minHeight: "100vh" }}
-      >
-        <div className="w-100 mb-4 d-flex align-items-center justify-content-center card-container">
-          <Card>
-            <Card.Body>
-              <h2 className="text-center ">Log In</h2>
-              {error && (
-                <Alert show="true" variant="danger">
-                  {error}
-                </Alert>
-              )}
-              <Form onSubmit={handleSubmit}>
-                <Form.Group id="email">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control type="email" ref={emailRef} required />
-                </Form.Group>
-                <Form.Group id="password">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" ref={passwordRef} required />
-                </Form.Group>
-                <Button disabled={loading} type="submit">
-                  Log in
-                </Button>
-              </Form>
-            </Card.Body>
-          </Card>
-          <div className="w-100 text-center mt-2">
-            <p>
-              Don't have a valid Account?{" "}
-              <Link to="/signup">Create Account</Link>
-            </p>
+    <div className="login__container" style={style}>
+      <h2 className="header">Log In</h2>
+      {error && (
+        <Alert show="true" variant="danger" className="text-center">
+          {error}
+        </Alert>
+      )}
+      <div className="login__content">
+        <Form onSubmit={handleSubmit}>
+          <div className="input__row">
+            <label htmlFor="email">Email</label>
+            <input type="email" id="email" ref={emailRef} required />
           </div>
-        </div>
-      </Container>
-    </>
+          <div className="input__row">
+            <label htmlFor="password">Password</label>
+            <input type="password" id="password" ref={passwordRef} required />
+          </div>
+          <div className="login__buttons__action">
+            <button
+              className="action__button action__create"
+              disabled={loading}
+              type="submit"
+            >
+              Log in
+            </button>
+          </div>
+        </Form>
+        <p className="additional__link__text">
+          Don't have a valid Account? <Link to="/signup">Create&nbsp;one</Link>
+        </p>
+      </div>
+    </div>
   );
 };
 

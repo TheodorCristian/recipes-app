@@ -69,16 +69,16 @@ const Signup = () => {
     e.preventDefault();
 
     if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-      return setError("Passwords do not match");
+      return setError("Passwords do not match.");
     }
     if (!firstNameRef.current.value) {
-      return setError("First Name cannot be empty");
+      return setError("First Name cannot be empty.");
     }
     if (!lastNameRef.current.value) {
-      return setError("Last Name cannot be empty");
+      return setError("Last Name cannot be empty.");
     }
     if (!emailRef.current.value) {
-      return setError("Email cannot be empty");
+      return setError("Email cannot be empty.");
     }
 
     try {
@@ -104,8 +104,10 @@ const Signup = () => {
       navigate("/home");
       console.log(data);
     } catch (error) {
-      setError("Failed to create an account");
-      console.log(error);
+      setError(
+        "Unable to create account. Please check again your account details."
+      );
+      console.warn(error);
     }
     setLoading(false);
   };
@@ -120,7 +122,7 @@ const Signup = () => {
   return (
     <div className="signup__container" style={style}>
       <h2 className="header">Create new account</h2>
-      {error && <Alert variant="danger">{error}</Alert>}
+      {error && <Alert variant="danger" className="text-center">{error}</Alert>}
 
       <div className="signup__content">
         {selectedAvatar && (
@@ -160,12 +162,16 @@ const Signup = () => {
             />
           </div>
           <div className="signup__buttons__action">
-            <button className="action__create" disabled={loading} type="submit">
+            <button
+              className="action__button action__create"
+              disabled={loading}
+              type="submit"
+            >
               Create Account
             </button>
           </div>
         </Form>
-        <p className="existing__account">
+        <p className="additional__link__text">
           Already have an account? <Link to="/login">Log&nbsp;In</Link>
         </p>
       </div>
@@ -183,10 +189,18 @@ const Signup = () => {
                       alt="Avatar"
                     />
                     <div className="avatars__popup__action__buttons">
-                      <button className="action__create" onClick={() => handleSelectAvatar(item.image)}>
+                      <button
+                        className="action__button action__create"
+                        onClick={() => handleSelectAvatar(item.image)}
+                      >
                         Choose current
                       </button>
-                      <button className="action__cancel" onClick={closePopup}>Cancel</button>
+                      <button
+                        className="action__button action__cancel"
+                        onClick={closePopup}
+                      >
+                        Cancel
+                      </button>
                     </div>
                   </Carousel.Item>
                 );

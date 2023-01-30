@@ -40,38 +40,34 @@ li {
 }
 .action__delete {
   background: #ff0032;
-  border-radius: 15px;
-  padding: 10px 20px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
-  border: 1px solid #eee;
-  min-width: 150px;
 }
+
+.action__delete:disabled {
+  background: #ff6c89;
+}
+
 .action__edit {
   background: #f49d1a;
-  border-radius: 15px;
-  padding: 10px 20px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
-  border: 1px solid #eee;
-  min-width: 150px;
+}
+.action__edit:disabled {
+  background: #f3bf70;
 }
 
 .action__cancel {
-  background: rgba(200, 200, 200, 0.9);
-  border-radius: 15px;
-  padding: 10px 20px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
-  border: 1px solid #eee;
-  min-width: 150px;
+  background: #aaa;
+}
+.action__cancel:disabled {
+  background: #ddd;
 }
 
 .action__create {
   background: #97cf8a;
+}
+.action__create:disabled {
+  background: #b5ccb0;
+}
+
+.action__button {
   border-radius: 15px;
   padding: 10px 20px;
   font-size: 13px;
@@ -79,6 +75,7 @@ li {
   color: #fff;
   border: 1px solid #eee;
   min-width: 150px;
+  text-transform: uppercase;
 }
 
 .hide {
@@ -112,18 +109,35 @@ li {
   background: #fff;
 }
 
+.additional__link__text {
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 20px;
+}
+.additional__link__text a {
+  font-size: 17px;
+  font-weight: 700;
+  color: #97cf8a;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 720px) {
   .header {
     font-size: 25px;
     line-height: 37px;
     margin: 50px auto;
   }
-
   .input__row label {
     font-size: 16px;
     line-height: 20px;
   }
   .input__row input {
     padding: 10px;
+  }
+  .action__button {
+    min-width: none;
+    width: 100%;
   }
 }

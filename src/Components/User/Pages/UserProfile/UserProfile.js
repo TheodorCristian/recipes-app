@@ -18,12 +18,15 @@ import LogOut from "../../../../Assets/images/log-out.png";
 import Wishlist from "../../../../Assets/images/wishlist.png";
 import { UserAuth } from "../../../../Contexts/AuthContext";
 import Back from "../../../General/Back/Back";
+import { Alert } from "react-bootstrap";
 
 const UserProfile = () => {
   let [firstName, setFirstName] = useState("");
   let [lastName, setLastName] = useState("");
   let [email, setEmail] = useState("");
   let [avatar, setAvatar] = useState("");
+  let [loading, setLoading] = useState(false);
+  let [error, setError] = useState("");
   const navigate = useNavigate();
   const { logout } = UserAuth();
   let user = JSON.parse(sessionStorage.getItem("user"));
@@ -43,27 +46,37 @@ const UserProfile = () => {
       sessionStorage.setItem("systemUserId", null);
       sessionStorage.setItem("isAdmin", null);
       navigate("/login");
+      setLoading(true);
     } catch (error) {
       console.log(error);
     }
+    setLoading(false);
   };
 
   const deleteAccount = async () => {
-    let accountId;
-    const accountRef = collection(db, "accounts");
-    const q = query(accountRef, where("uid", "==", user.data.uid));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      accountId = doc.id;
-    });
-    deleteUser(systemUser)
-      .then(() => {
-        deleteDoc(doc(db, "accounts", accountId));
-        navigate("/signup");
-      })
-      .catch((error) => {
-        console.log(error);
+    try {
+      setError("");
+      setLoading(true);
+      let accountId;
+      const accountRef = collection(db, "accounts");
+      const q = query(accountRef, where("uid", "==", user.data.uid));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        accountId = doc.id;
       });
+      deleteUser(systemUser)
+        .then(() => {
+          deleteDoc(doc(db, "accounts", accountId));
+          navigate("/signup");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      document.querySelector("body").classList.remove("hide__scrollbar");
+    } catch (err) {
+      setError("Failed to delete the account: " + err);
+    }
+    setLoading(false);
   };
 
   const wishlist = () => {
@@ -81,7 +94,6 @@ const UserProfile = () => {
 
   useEffect(() => {
     getAccountDetails();
-    console.log(user);
   }, []);
 
   return (
@@ -91,16 +103,28 @@ const UserProfile = () => {
           <h3>Are you sure?</h3>
           <p>You will permanently delete your account.</p>
           <div className="account__popup__buttons">
-            <button className="action__delete" onClick={deleteAccount}>
+            <button
+              className="action__button action__delete"
+              onClick={deleteAccount}
+              disabled={loading}
+            >
               Delete Account
             </button>
-            <button className="action__cancel" onClick={hideDeletePopUp}>
+            <button
+              className="action__button action__cancel"
+              onClick={hideDeletePopUp}
+            >
               Cancel
             </button>
           </div>
         </div>
       </div>
       <ClientHeader />
+      {error && (
+        <Alert show="true" variant="danger">
+          {error}
+        </Alert>
+      )}
       <div className="account__container">
         <div className="account__logout__button" onClick={logOut}>
           <img src={LogOut} alt="Log Out image" />
@@ -128,10 +152,15 @@ const UserProfile = () => {
             <input type="text" id="email" value={email} disabled />
           </div>
           <div className="account__button__actions">
-            <button className="action__delete" onClick={displayDeletePopUp}>
+            <button
+              className="action__button action__delete"
+              onClick={displayDeletePopUp}
+            >
               Delete Account
             </button>
-            <button className="action__edit">Edit Account</button>
+            <button className="action__button action__edit">
+              Edit Account
+            </button>
           </div>
         </div>
       </div>

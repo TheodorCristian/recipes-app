@@ -1,17 +1,7 @@
 .signup__container {
   margin: 0 auto;
   padding: 50px 0;
-  .existing__account {
-    font-size: 15px;
-    line-height: 22px;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin: 20px;
-    a {
-      font-size: 17px;
-      font-weight: 700;
-    }
-  }
+  min-height: 100vh;
   .signup__content {
     display: flex;
     align-items: center;
@@ -119,13 +109,13 @@
         width: 100%;
         text-align: center;
         img {
-            border-radius: 50%;
+          border-radius: 50%;
         }
         .avatars__popup__action__buttons {
           margin: 50px auto;
           button {
             margin: 0 10px;
-            transition: .3s;
+            transition: 0.3s;
           }
           button:hover {
             transform: scale(1.2);

@@ -1,5 +1,6 @@
 .account__page {
   display: relative;
+  min-height: 100vh;
   .account__delete__popup {
     position: absolute;
     display: block;
@@ -86,7 +87,6 @@
       img {
         width: 100%;
         height: auto;
-
       }
     }
     h3 {
@@ -140,6 +140,7 @@
       h3 {
         font-size: 20px;
         line-height: 25px;
+        margin: 50px auto 20px;
       }
       .account__details {
         padding: 0 5px;
@@ -147,6 +148,17 @@
           flex-direction: column;
           button {
             margin: 5px 10px;
+          }
+        }
+      }
+    }
+    .account__delete__popup {
+      .account__delete__popup__container {
+        text-align: center;
+        .account__popup__buttons {
+          flex-direction: column;
+          button {
+            margin: 5px;
           }
         }
       }
