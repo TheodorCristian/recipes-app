@@ -1,6 +1,5 @@
 .account__page {
   display: relative;
-  min-height: 100vh;
   .account__delete__popup {
     position: absolute;
     display: block;
@@ -41,7 +40,7 @@
           transition: 0.3s;
         }
         button:hover {
-          transform: scale(1.2);
+          transform: scale(1.05);
         }
       }
     }
@@ -49,7 +48,7 @@
   .account__container {
     width: 90%;
     max-width: 600px;
-    margin: 150px auto 50px;
+    margin: 150px auto 0px;
     border-radius: 50px;
     background: #e0e0e0;
     box-shadow: -20px 20px 60px #bebebe, 20px -20px 60px #ffffff;
@@ -68,6 +67,7 @@
         height: auto;
       }
     }
+
     .account__logout__button {
       left: 50px;
     }
@@ -76,11 +76,12 @@
     }
     .account__logout__button:hover,
     .account__wishlist__button:hover {
-      transform: scale(1.2);
+      transform: scale(1.05);
     }
     .account__avatar {
-      width: 150px;
-      height: 150px;
+      width: 200px;
+      height: 200px;
+      background: #000;
       border-radius: 50%;
       margin: 0 auto;
       overflow: hidden;
@@ -102,6 +103,27 @@
       flex-direction: column;
       align-items: flex-start;
       padding: 0 50px;
+      .account__row {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 30px;
+        width: 100%;
+        label {
+          font-size: 18px;
+          line-height: 25px;
+          font-weight: 600;
+          margin-bottom: 10px;
+        }
+        input {
+          width: 100%;
+          padding: 15px;
+          border-radius: 10px;
+          outline: none;
+          border: none;
+          background: #fff;
+        }
+      }
       .account__button__actions {
         width: 100%;
         display: flex;
@@ -112,7 +134,7 @@
           transition: 0.3s;
         }
         button:hover {
-          transform: scale(1.2);
+          transform: scale(1.05);
         }
       }
     }
@@ -140,10 +162,18 @@
       h3 {
         font-size: 20px;
         line-height: 25px;
-        margin: 50px auto 20px;
       }
       .account__details {
         padding: 0 5px;
+        .account__row {
+          label {
+            font-size: 16px;
+            line-height: 20px;
+          }
+          input {
+            padding: 10px;
+          }
+        }
         .account__button__actions {
           flex-direction: column;
           button {
@@ -155,11 +185,12 @@
     .account__delete__popup {
       .account__delete__popup__container {
         text-align: center;
-        .account__popup__buttons {
-          flex-direction: column;
-          button {
-            margin: 5px;
-          }
+        padding: 20px;
+      }
+      .account__popup__buttons {
+        flex-direction: column;
+        button {
+          margin: 5px auto;
         }
       }
     }
