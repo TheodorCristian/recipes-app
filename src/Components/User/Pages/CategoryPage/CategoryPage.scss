@@ -101,6 +101,9 @@
           text-transform: uppercase;
           text-decoration: none;
           text-align: center;
+          a {
+            text-decoration: none;
+          }
         }
         .category:hover > a {
           text-decoration: none;
@@ -173,6 +176,23 @@
       .recipe__teaser__content {
         width: 90%;
         margin: 20px auto;
+      }
+    }
+  }
+}
+@media screen and (max-width: 720px) {
+  .category__page {
+    .recipe__teaser__container {
+      .categories__list {
+        .categories {
+          justify-content: space-between;
+          .category {
+            text-align: left;
+          }
+          .category:nth-child(even) {
+            text-align: right;
+          }
+        }
       }
     }
   }

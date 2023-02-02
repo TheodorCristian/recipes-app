@@ -5,6 +5,7 @@ import WishlistRecipeTeaser from "../../WishlistRecipeTeaser/WishlistRecipeTease
 import ClientHeader from "../../ClientHeader/ClientHeader";
 import "./WishlistPage.scss";
 import Back from "../../../General/Back/Back";
+import ClientFooter from "../../ClientFooter/ClientFooter";
 
 const WishlistPage = () => {
   const [wishlist, setWishlist] = useState([]);
@@ -69,6 +70,7 @@ const WishlistPage = () => {
           })}
         </div>
       </div>
+      <ClientFooter />
     </>
   );
 };

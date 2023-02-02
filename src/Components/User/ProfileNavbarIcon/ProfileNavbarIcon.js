@@ -67,6 +67,7 @@ function ProfileNavbarIcon() {
           vertical: "top",
           horizontal: "center",
         }}
+        getContentAnchorEl={null}
       >
         <MenuItem onClick={goToProfile}>MY PROFILE</MenuItem>
         <MenuItem onClick={goToWishlist}>WISHSLIST</MenuItem>

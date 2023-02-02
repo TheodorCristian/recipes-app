@@ -14,6 +14,7 @@ import { db } from "../../../../firebaseAuthConfig";
 import "./UserProfile.scss";
 import "../../../../App.css";
 import ClientHeader from "../../ClientHeader/ClientHeader";
+import ClientFooter from "../../ClientFooter/ClientFooter";
 import LogOut from "../../../../Assets/images/log-out.png";
 import Wishlist from "../../../../Assets/images/wishlist.png";
 import { UserAuth } from "../../../../Contexts/AuthContext";
@@ -144,7 +145,9 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
+
       <Back />
+      <ClientFooter />
     </div>
   );
 };

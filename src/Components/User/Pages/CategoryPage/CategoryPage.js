@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import "./CategoryPage.scss";
 import { db } from "../../../../firebaseAuthConfig";
 import ClientHeader from "../../ClientHeader/ClientHeader";
+import ClientFooter from "../../ClientFooter/ClientFooter"; 
 import RecipeTeaser from "../../RecipeTeaser/RecipeTeaser";
 import { Link } from "react-router-dom";
 import Back from "../../../General/Back/Back";
@@ -114,6 +115,7 @@ const CategoryPage = () => {
           </div>
         </div>
       </div>
+      <ClientFooter />
       <Back />
     </>
   );

@@ -15,21 +15,8 @@ const Login = () => {
   const { login } = UserAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [style, setStyle] = useState({});
 
   let navigate = useNavigate();
-
-  const setBackground = () => {
-    let style = {
-      backgroundImage: `url(${PageBackground})`,
-      backgroundAttachment: "fixed",
-      backgroundSize: "cover",
-      width: "100%",
-      backgroundPosition: "center",
-    };
-
-    setStyle(style);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,12 +37,8 @@ const Login = () => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    setBackground();
-  }, []);
-
   return (
-    <div className="login__container" style={style}>
+    <div className="login__container">
       <h2 className="header">Log In</h2>
       {error && (
         <Alert show="true" variant="danger" className="text-center">

@@ -72,3 +72,12 @@
 .recipe__teaser:hover {
   text-decoration: none;
 }
+
+@media screen and (max-width: 720px) {
+  .recipe__teaser {
+    height: auto;
+    .recipe__description {
+      height: auto;
+    }
+  }
+}

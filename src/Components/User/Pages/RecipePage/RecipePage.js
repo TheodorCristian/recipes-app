@@ -16,6 +16,7 @@ import Wishlisted from "../../../../Assets/images/checked.png";
 import Add from "../../../../Assets/images/add.png";
 import "../../../../App.css";
 import { getAccount } from "../../../../Utils/utils";
+import ClientFooter from "../../ClientFooter/ClientFooter";
 
 const RecipePage = () => {
   const [recipe, setRecipe] = useState([]);
@@ -26,6 +27,7 @@ const RecipePage = () => {
   let { cat, id } = useParams();
   let user = JSON.parse(sessionStorage.getItem("user"));
   let systemUser = sessionStorage.getItem("systemUserId");
+  let desktopFooterStyle = { display: "none" };
 
   const handleCssEvent = () => {
     let tabHeader = document.getElementsByClassName(
@@ -221,6 +223,7 @@ const RecipePage = () => {
           </div>
         </div>
       </div>
+      <ClientFooter />
     </div>
   );
 };

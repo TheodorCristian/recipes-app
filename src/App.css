@@ -17,6 +17,11 @@ li {
   padding: 0;
 }
 
+body {
+  overflow: visible !important;
+  padding-right: 0 !important;
+}
+
 .header {
   font-size: 32px;
   text-transform: uppercase;
@@ -84,7 +89,7 @@ li {
 }
 
 .hide__scrollbar {
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 .input__row {
@@ -142,5 +147,12 @@ li {
   }
   .additional__link__text {
     text-align: center;
+  }
+  .mobile__hide {
+    display: none !important;
+  }
+
+  .mobile__display {
+    display: block !important;
   }
 }

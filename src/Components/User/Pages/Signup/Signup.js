@@ -25,21 +25,9 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const [avatars, setAvatars] = useState([]);
   const [selectedAvatar, setSelectedAvatar] = useState(`${DefaultAvatar}`);
-  const [style, setStyle] = useState({});
 
   let navigate = useNavigate();
-
-  const setBackground = () => {
-    let style = {
-      backgroundImage: `url(${PageBackground})`,
-      backgroundAttachment: "fixed",
-      backgroundSize: "cover",
-      width: "100%",
-      backgroundPosition: "center",
-    };
-
-    setStyle(style);
-  };
+  
   const getAvatars = async () => {
     const docRef = await getDocs(collection(db, "avatars"));
     docRef.forEach((doc) => {
@@ -113,16 +101,17 @@ const Signup = () => {
   };
 
   useEffect(() => {
-    setBackground();
-  }, []);
-  useEffect(() => {
     getAvatars();
   }, [setAvatars]);
 
   return (
-    <div className="signup__container" style={style}>
+    <div className="signup__container">
       <h2 className="header">Create new account</h2>
-      {error && <Alert variant="danger" className="text-center">{error}</Alert>}
+      {error && (
+        <Alert variant="danger" className="text-center">
+          {error}
+        </Alert>
+      )}
 
       <div className="signup__content">
         {selectedAvatar && (

@@ -2,7 +2,11 @@
   margin: 0 auto;
   padding: 50px 0;
   min-height: 100vh;
-
+  background-image: url("../../../../Assets/images/white-background.png");
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100%;
+  background-position: center;
   .login__content {
     display: flex;
     align-items: center;
