@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ProfileNavbarIcon.scss";
 import { Button, Menu, MenuItem, Divider } from "@material-ui/core";
+import { UserAuth } from "../../../Contexts/AuthContext";
 
 function ProfileNavbarIcon() {
   let user = JSON.parse(sessionStorage.getItem("user")).data;
   let userName = user.first_name;
   let userAvatar = user.avatar;
   const navigate = useNavigate();
+  const { logout } = UserAuth();
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -27,7 +29,11 @@ function ProfileNavbarIcon() {
     navigate("/wishlist");
   };
 
-  const logout = async () => {
+  const goToShoppingList = () => {
+    navigate("/shopping-list");
+  }
+
+  const logOut = async () => {
     try {
       await logout();
       sessionStorage.setItem("user", null);
@@ -71,9 +77,9 @@ function ProfileNavbarIcon() {
       >
         <MenuItem onClick={goToProfile}>MY PROFILE</MenuItem>
         <MenuItem onClick={goToWishlist}>WISHSLIST</MenuItem>
-        {/*<MenuItem onClick={handleClose}>SHOPPING LIST</MenuItem>*/}
+        <MenuItem onClick={goToShoppingList}>SHOPPING LIST</MenuItem>
         <Divider />
-        <MenuItem onClick={logout}>LOG OUT</MenuItem>
+        <MenuItem onClick={logOut}>LOG OUT</MenuItem>
       </Menu>
     </div>
   );

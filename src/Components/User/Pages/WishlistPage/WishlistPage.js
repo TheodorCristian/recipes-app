@@ -43,6 +43,10 @@ const WishlistPage = () => {
     getWishlist();
   }, [setWishlist]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <ClientHeader />

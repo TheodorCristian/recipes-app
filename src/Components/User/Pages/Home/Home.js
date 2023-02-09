@@ -64,7 +64,9 @@ const Home = () => {
   useEffect(() => {
     getCategories();
     setBackground();
+    window.scrollTo(0, 0);
   }, []);
+  
   return (
     <div>
       <ClientHeader />

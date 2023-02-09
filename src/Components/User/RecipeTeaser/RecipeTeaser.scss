@@ -1,6 +1,5 @@
 .recipe__teaser {
   width: 300px;
-  height: 450px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -12,7 +11,7 @@
   transition: 0.5s;
   .recipe__teaser__image {
     width: 100%;
-    height: 200px;
+    height: 220px;
     position: relative;
     overflow: hidden;
     img {
@@ -24,7 +23,7 @@
   }
   .recipe__description {
     display: flex;
-    height: 250px;
+    height: 280px;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
@@ -52,7 +51,7 @@
     padding: 10px;
     .recipe__stat {
       padding: 10px;
-      border-right: 1px solid #333;
+      border-right: 1px solid #888;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -66,6 +65,9 @@
         margin: 0 5px;
         height: 100%;
       }
+    }
+    .recipe__stat:nth-last-of-type(1) {
+      border-right: none;
     }
   }
 }

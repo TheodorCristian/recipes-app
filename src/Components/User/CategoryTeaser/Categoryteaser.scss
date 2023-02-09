@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: flex-start;
   width: 250px;
-  height: 400px;
+  height: 430px;
   margin: 30px;
   border-radius: 20px;
   overflow: hidden;
@@ -37,7 +37,7 @@
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    height: 235px;
+    height: 240px;
     h1 {
       font-size: 18px;
       text-transform: capitalize;
@@ -57,7 +57,7 @@
       border-radius: 20px;
       text-decoration: none;
       margin-top: 20px;
-      transition: .3s;
+      transition: 0.3s;
       span {
         text-transform: capitalize;
       }

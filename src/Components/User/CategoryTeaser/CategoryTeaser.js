@@ -11,12 +11,7 @@ const CategoryTeaser = ({ name, description, thumbnail }) => {
       <div className="category__teaser__content">
         <h1>{name}</h1>
         <p>{description}</p>
-        <Link
-          className="category__teaser__cta"
-          to={`/recipes/${name}`}
-        >
-          Go to <span>{name}</span>
-        </Link>
+         
       </div>
     </div>
   );

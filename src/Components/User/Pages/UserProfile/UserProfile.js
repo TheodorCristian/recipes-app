@@ -82,7 +82,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     getAccountDetails();
-    console.log(user);
+    window.scrollTo(0, 0);
   }, []);
 
   return (

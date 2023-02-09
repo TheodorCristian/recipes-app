@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import "./CategoryPage.scss";
 import { db } from "../../../../firebaseAuthConfig";
 import ClientHeader from "../../ClientHeader/ClientHeader";
-import ClientFooter from "../../ClientFooter/ClientFooter"; 
+import ClientFooter from "../../ClientFooter/ClientFooter";
 import RecipeTeaser from "../../RecipeTeaser/RecipeTeaser";
 import { Link } from "react-router-dom";
 import Back from "../../../General/Back/Back";
@@ -56,7 +56,12 @@ const CategoryPage = () => {
     getAllCategories();
     getCategories();
     getRecipes();
+    window.scrollTo(0, 0);
   }, [id]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <ClientHeader />

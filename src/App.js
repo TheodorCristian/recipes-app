@@ -21,6 +21,7 @@ import EditIngredient from "./Components/Admin/EditIngredient/EditIngredient";
 import ProtectedAdminRoutes from "./Utils/ProtectedAdminRoutes";
 import ProtectedUserRoutes from "./Utils/ProtectedUserRoutes";
 import WishlistPage from "./Components/User/Pages/WishlistPage/WishlistPage";
+import ShoppingList from "./Components/User/Pages/ShoppingList/ShoppingList";
 
 const App = () => {
   return (
@@ -67,6 +68,14 @@ const App = () => {
             element={
               <ProtectedUserRoutes redirectPath="/login">
                 <WishlistPage />
+              </ProtectedUserRoutes>
+            }
+          />
+          <Route
+            path="/shopping-list"
+            element={
+              <ProtectedUserRoutes redirectPath="/login">
+                <ShoppingList />
               </ProtectedUserRoutes>
             }
           />

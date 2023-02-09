@@ -104,6 +104,9 @@ const Signup = () => {
     getAvatars();
   }, [setAvatars]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
   return (
     <div className="signup__container">
       <h2 className="header">Create new account</h2>
