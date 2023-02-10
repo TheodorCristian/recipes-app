@@ -258,7 +258,7 @@ const ShoppingList = () => {
                   </div>
                 </div>
                 <div className="shopping__list__content hide">
-                  {item.data.list_items.map((listItem, index) => {
+                  {item.data.list_items.map((listItem) => {
                     return (
                       <ShoppingListItem
                         key={listItem.name}

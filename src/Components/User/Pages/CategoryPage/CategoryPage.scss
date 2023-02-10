@@ -37,7 +37,7 @@
   }
 }
 .category__page {
-  width: 100%;
+  width: 90%;
   max-width: 1700px;
   margin: 0 auto;
   .category__page__separator {
@@ -62,53 +62,32 @@
     margin: 50px auto;
     display: flex;
     align-items: flex-start;
+    .filters__container {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background: #eee;
+      margin-right: 50px;
+      padding: 50px;
+      border-radius: 25px;
+      .category__filter,
+      .duration__filter,
+      .difficulty__filter {
+      }
+    }
+    .filters__container__mobile {
+      display: none;
+    }
     .recipe__teaser__content {
       width: 100%;
       max-width: 1300px;
-      margin: 20px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
       border-radius: 30px;
       box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
-    }
-    .categories__list {
-      width: 20%;
-      height: 510px;
-      max-width: 400px;
-      margin: 20px 0;
-      margin-right: 60px;
-      padding: 50px;
-      display: flex;
-      align-items: flex-start;
-      flex-direction: column;
-      background: #eee;
-      border-radius: 30px;
-      font-size: 18px;
-      font-weight: bold;
-      text-transform: uppercase;
-      .categories {
-        height: 100%;
-        width: 100%;
+      .recipe__teaser__content__recipes {
         display: flex;
         align-items: center;
-        justify-content: space-around;
-        flex-direction: column;
-        list-style-type: none;
-        margin-bottom: 0;
-        .category {
-          text-transform: uppercase;
-          text-decoration: none;
-          text-align: center;
-          a {
-            text-decoration: none;
-          }
-        }
-        .category:hover > a {
-          text-decoration: none;
-          transform: scale(1.05);
-        }
+        justify-content: center;
+        flex-wrap: wrap;
       }
     }
   }
@@ -161,43 +140,75 @@
     }
     .recipe__teaser__container {
       flex-direction: column;
-      .categories__list {
+      margin-top: 0;
+      .filters__container {
+        display: none;
+      }
+      .filters__container__mobile {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
         width: 90%;
-        margin: 0 auto;
-        max-width: none;
-        height: auto;
-        padding: 20px 20px;
-        border-radius: 10px;
-        .categories {
-          flex-direction: row;
-          flex-wrap: wrap;
-          .category {
-            flex: auto;
-            margin: 0 10px;
+        margin: 30px auto;
+        background: #eee;
+        padding: 30px;
+        border-radius: 25px;
+        .category__filter,
+        .duration__filter,
+        .difficulty__filter {
+          p {
+            font-size: 15px;
+            line-height: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+          }
+          select {
+            padding: 10px 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 12px;
+            line-height: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
           }
         }
       }
       .recipe__teaser__content {
         width: 90%;
-        margin: 20px auto;
+        margin: 0 auto 20px;
       }
     }
   }
 }
 @media screen and (max-width: 720px) {
+  .category__page__content {
+    margin-bottom: 0;
+    .category__page__details {
+      .category__page__title {
+        font-size: 28px;
+        line-height: 32px;
+      }
+      .category__page__description {
+        font-size: 18px;
+        line-height: 20px;
+      }
+    }
+  }
   .category__page {
+    margin-top: 0px;
     .recipe__teaser__container {
-      .categories__list {
-        .categories {
-          justify-content: space-between;
-          .category {
-            text-align: left;
-          }
-          .category:nth-child(even) {
-            text-align: right;
-          }
+      .filters__container__mobile {
+        flex-direction: column;
+        .category__filter, .duration__filter, .difficulty__filter {
+          margin-bottom: 20px;
         }
       }
+      .recipe__teaser__content__recipes {
+        padding: 15px 0;
+      }
+
     }
   }
 }

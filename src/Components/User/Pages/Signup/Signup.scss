@@ -140,5 +140,18 @@
       width: 90%;
       padding: 20px;
     }
+    .avatars__popup__container {
+      .avatars__content {
+        .avatars__carousel {
+          .carousel-control-prev,
+          .carousel-control-next {
+            display: none;
+          }
+          .avatars__popup__action__buttons {
+            flex-direction: column;
+          }
+        }
+      }
+    }
   }
 }

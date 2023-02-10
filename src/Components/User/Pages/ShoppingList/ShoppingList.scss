@@ -89,6 +89,7 @@
         .shopping__list__expand,
         .shopping__list__shrink,
         .shopping__list_remove {
+          width: 100%;
           max-width: 30px;
           cursor: pointer;
           transition: 0.3s;
@@ -190,9 +191,39 @@
     .shopping__list__container__page__content {
       .shopping__list__add__container {
         padding: 20px;
+        p {
+          font-size: 15px;
+          line-height: 18px;
+        }
+        .shopping__list__add__list {
+          input {
+            font-size: 12px;
+          }
+        }
       }
       .shopping__list__container {
         padding: 15px 20px;
+        .shopping__list__headline {
+          .shopping__list__title {
+            font-size: 16px;
+            line-height: 18px;
+          }
+        }
+        .shopping__list__add__item {
+          .shopping__list__add__item__action__zone {
+            input {
+              font-size: 12px;
+            }
+          }
+        }
+        .shopping__list__content {
+          margin: 30px 0;
+          .shopping__list__item {
+            p {
+              padding-left: 15px;
+            }
+          }
+        }
       }
     }
   }
