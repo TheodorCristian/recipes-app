@@ -1,7 +1,8 @@
 .account__page {
   display: relative;
   min-height: 100vh;
-  .account__delete__popup {
+  .account__delete__popup,
+  .account__edit__popup {
     position: fixed;
     display: block;
     top: 0;
@@ -14,17 +15,37 @@
     align-items: center;
     justify-content: center;
     z-index: 1001;
+  }
+
+  .account__delete__popup .account__delete__popup__container,
+  .account__edit__popup .account__edit__popup__container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 450px;
+    border: 1px solid #bebebe;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .account__delete__popup
+    .account__delete__popup__container
+    .account__popup__buttons,
+  .account__edit__popup
+    .account__edit__popup__container
+    .account__popup__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .account__delete__popup {
     .account__delete__popup__container {
-      width: 90%;
-      margin: 0 auto;
-      max-width: 450px;
-      border: 1px solid #bebebe;
-      background-color: #fff;
-      padding: 50px;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
       h3 {
         font-weight: 600;
       }
@@ -32,16 +53,68 @@
         font-weight: 500;
       }
       .account__popup__buttons {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        margin: 10px 0;
-        width: 100%;
         button {
           transition: 0.3s;
         }
         button:hover {
           transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  .account__edit__popup {
+    .account__edit__popup__container {
+      max-width: 600px;
+      .account__edit__popup__content {
+        width: 100%;
+        .avatars__content {
+          width: 100%;
+          .avatars__carousel {
+            width: 100%;
+            text-align: center;
+            max-width: 300px;
+            margin: 0 auto;
+            .carousel-control-prev,
+            .carousel-control-next {
+              display: none;
+            }
+            .carousel-indicators button {
+              background-color: #000;
+            }
+            img {
+              width: 100%;
+              height: auto;
+              border-radius: 50%;
+            }
+            .avatars__popup__action__buttons {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin: 50px auto;
+              button {
+                margin: 0 10px;
+                transition: 0.3s;
+              }
+              button:hover {
+                transform: scale(1.05);
+              }
+            }
+          }
+        }
+        .input__row {
+          input {
+            background: #eee;
+          }
+        }
+        .account__popup__buttons {
+          button {
+            transition: 0.3s;
+            min-width: 170px;
+          }
+          button:hover {
+            transform: scale(1.05);
+          }
         }
       }
     }
@@ -183,15 +256,36 @@
         }
       }
     }
-    .account__delete__popup {
-      .account__delete__popup__container {
-        text-align: center;
-        padding: 20px;
+    .account__delete__popup .account__delete__popup__container,
+    .account__edit__popup .account__edit__popup__container {
+      text-align: center;
+      padding: 20px;
+      h3 {
+        font-size: 22px;
+        margin-bottom: 20px;
       }
       .account__popup__buttons {
         flex-direction: column;
         button {
           margin: 5px auto;
+        }
+      }
+    }
+
+    .account__edit__popup
+      .account__edit__popup__container
+      .account__edit__popup__content
+      .avatars__content
+      .avatars__carousel {
+      max-width: none;
+      img {
+        max-width: 200px;
+        margin: 0 auto;
+        height: auto;
+      }
+      .avatars__popup__action__buttons {
+        button {
+          margin: 0;
         }
       }
     }

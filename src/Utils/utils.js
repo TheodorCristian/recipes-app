@@ -21,3 +21,10 @@ export const getAccount = async (id) => {
   return accounts[0];
 };
 
+export const adminDashboardFetch = async (collectionName) => {
+  let arr = [];
+  const querySnapshot = await getDocs(collection(db, collectionName));
+  querySnapshot.forEach((doc) => arr.push(doc.data()));
+  return arr;
+}
+

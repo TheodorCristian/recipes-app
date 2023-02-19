@@ -83,6 +83,7 @@ const Signup = () => {
         uid: systemUser.uid,
         wishlist: [],
         avatar: selectedAvatar,
+        shopping_list: []
       };
       await addDoc(collection(db, "accounts"), data);
       let accountRez = await getAccount(systemUser.uid);

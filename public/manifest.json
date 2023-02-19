@@ -1,0 +1,10 @@
+{
+   "short_name": "Fooddyy",
+   "name": "The new way of cooking",
+   "icons": [
+      {
+         "src": "logo.png",
+         "type": "image/png"
+      }
+   ]
+}

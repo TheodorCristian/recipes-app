@@ -201,14 +201,22 @@
     .recipe__teaser__container {
       .filters__container__mobile {
         flex-direction: column;
-        .category__filter, .duration__filter, .difficulty__filter {
+        .category__filter,
+        .duration__filter,
+        .difficulty__filter {
           margin-bottom: 20px;
+        }
+        .category__filter .category__filter__container,
+        .duration__filter .duration__filter__container,
+        .difficulty__filter .difficulty__filter__container {
+          select {
+            -webkit-appearance: none;
+          }
         }
       }
       .recipe__teaser__content__recipes {
         padding: 15px 0;
       }
-
     }
   }
 }

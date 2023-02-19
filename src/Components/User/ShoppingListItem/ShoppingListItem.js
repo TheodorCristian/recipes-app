@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import "./ShoppingListItem.scss";
 import Remove from "../../../Assets/images/trash.png";
 
@@ -7,18 +7,25 @@ const ShoppingListItem = ({
   deleteAction,
   checkedInitialValue,
   updateCheck,
+  itemId,
 }) => {
+
   return (
-    <div className="shopping__list__item" key={title}>
-      <input
-        type="checkbox"
-        checked={checkedInitialValue}
-        id={title}
-        name={title}
-        onChange={updateCheck}
-        value={title}
-      />
-      <p>{title}</p>
+    <div
+      id={itemId}
+      name={title}
+      value={title}
+      key={title}
+      className="shopping__list__item"
+    >
+      <div className="shopping__list__item__info" onClick={updateCheck}>
+        {checkedInitialValue == true ? (
+          <div className="item__checkbox__active"></div>
+        ) : (
+          <div className="item__checkbox"></div>
+        )}
+        <p>{title}</p>
+      </div>
       <div className="shopping__list__item__remove" onClick={deleteAction}>
         <img src={Remove} alt="Remove Item" />
       </div>

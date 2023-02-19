@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Alert } from "react-bootstrap";
-import { db, storage } from "../../../firebaseAuthConfig";
+import { db, storage } from "../../../../firebaseAuthConfig";
 import { doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { createId } from "../../../Utils/utils";
+import { createId } from "../../../../Utils/utils";
 import "./AddRecipe.scss";
-import Add from "../../../Assets/images/add.png";
+import Add from "../../../../Assets/images/add.png";
 
 const AddRecipe = () => {
   const [loading, setLoading] = useState(false);

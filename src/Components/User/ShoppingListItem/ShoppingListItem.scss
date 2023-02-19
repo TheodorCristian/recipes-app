@@ -1,0 +1,22 @@
+.item__checkbox {
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 1px solid #777;
+  border-radius: 50%;
+}
+
+.item__checkbox__active {
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 1px solid #777;
+  background: #c5d6c4;
+  border-radius: 50%;
+}
+
+.shopping__list__item__info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

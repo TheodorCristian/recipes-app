@@ -8,10 +8,8 @@ import {
   arrayUnion,
   addDoc,
   collection,
-  getDocs,
 } from "firebase/firestore";
 import { db } from "../../../../firebaseAuthConfig";
-import uuid from "react-uuid";
 import "./ShoppingList.scss";
 import "../../../../App.css";
 import Expand from "../../../../Assets/images/more.png";
@@ -25,7 +23,6 @@ import ShoppingListItem from "../../ShoppingListItem/ShoppingListItem";
 const ShoppingList = () => {
   const [shoppingLists, setShoppingLists] = useState([]);
   let user = JSON.parse(sessionStorage.getItem("user")).accountRef;
-  let listItemRef = useRef();
   let listRef = useRef();
 
   const getShoppingList = async () => {
@@ -149,7 +146,7 @@ const ShoppingList = () => {
     }
   };
 
-  const changeCheckedValue = async (listItem, listId) => {
+  const changeCheckedValue = async (listItem, listId, itemId) => {
     //remove initial object
     const shoppingListRef = doc(db, "shopping-lists", listId);
     await updateDoc(shoppingListRef, {
@@ -162,7 +159,6 @@ const ShoppingList = () => {
         checked: !listItem.checked,
       }),
     });
-
     setShoppingListItems();
   };
 
@@ -259,17 +255,20 @@ const ShoppingList = () => {
                 </div>
                 <div className="shopping__list__content hide">
                   {item.data.list_items.map((listItem) => {
+                    let trimmedName = listItem.name.split(" ").join("");
+                    let itemId = "prefix" + trimmedName;
                     return (
                       <ShoppingListItem
-                        key={listItem.name}
+                        key={itemId}
                         title={listItem.name}
                         checkedInitialValue={listItem.checked}
                         deleteAction={() =>
                           deleteItemFromShoppingList(listItem, item.id)
                         }
                         updateCheck={() =>
-                          changeCheckedValue(listItem, item.id)
+                          changeCheckedValue(listItem, item.id, itemId)
                         }
+                        itemId={itemId}
                       />
                     );
                   })}
